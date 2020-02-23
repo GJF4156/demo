@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.demo.Fragment.Presenter.IFragmentShopP;
+import com.example.demo.Fragment.Presenter.impl.FragmentShopPImpl;
+import com.example.demo.Fragment.View.IFragmentShopV;
 import com.example.demo.R;
 import com.example.demo.Utils.GlideImageLoader;
 import com.example.demo.adapter.ProductAdapter;
@@ -26,11 +29,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ShopFragment extends Fragment implements OnBannerListener {
+public class ShopFragment extends Fragment implements OnBannerListener, IFragmentShopV {
     private Banner banner;
     List<String> images = new ArrayList<>();   //定义图片集合
     List<Product> products = new ArrayList<>();
     private RecyclerView productRv;
+    private IFragmentShopP mPresenter;
 
     public ShopFragment() {
         // Required empty public constructor
@@ -41,15 +45,14 @@ public class ShopFragment extends Fragment implements OnBannerListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shop, container, false);
+
+        mPresenter=new FragmentShopPImpl(this::getData);
+        mPresenter.getData();
+
+
         productRv = view.findViewById(R.id.product_Rv);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         productRv.setLayoutManager(layoutManager);
-        getData();
-        productRv.setAdapter(new ProductAdapter(products, new ProductAdapter.OnItemClickListener() {
-            @Override
-            public void onClick(int position) {
-            }
-        }, getActivity()));
         images.add("http://seopic.699pic.com/photo/40005/1749.jpg_wh1200.jpg");
         images.add("http://seopic.699pic.com/photo/50059/1442.jpg_wh1200.jpg");
         images.add("http://seopic.699pic.com/photo/50054/5187.jpg_wh1200.jpg");  //图片路径
@@ -62,20 +65,19 @@ public class ShopFragment extends Fragment implements OnBannerListener {
         return view;
     }
 
-    private void getData() {
-        for (int i = 0; i < 6; i++) {
-            Product product = new Product();
-            product.setImgUrl("http://seopic.699pic.com/photo/40005/1749.jpg_wh1200.jpg");
-            product.setDescription("商品一商品一");
-            product.setPrice("￥23.00");
-            product.setSell("已售0");
-            products.add(product);
-        }
-        System.out.println("哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈\n" + products.get(1).toString());
-    }
-
     @Override
     public void OnBannerClick(int position) {
         Toast.makeText(getActivity(), "点击了第" + position + "个", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void getData(List<Product.ProductInfoListBean> productInfoListBeanList) {
+        productRv.setAdapter(new ProductAdapter(productInfoListBeanList, new ProductAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(getActivity(), productInfoListBeanList.get(position)
+                        .getProduct().getDescription(), Toast.LENGTH_SHORT).show();
+            }
+        }, getActivity()));
     }
 }

@@ -43,6 +43,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.NewsCtime.setText(mDataBeanList.get(position).getCtime());
         if (!mDataBeanList.get(position).getPicUrl().isEmpty()){
             x.image().bind(holder.NewsImg,"http://env.people.com.cn/"+mDataBeanList.get(position).getPicUrl());
+        }else {
+            x.image().bind(holder.NewsImg,"http://seopic.699pic.com/photo/50054/5187.jpg_wh1200.jpg");
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

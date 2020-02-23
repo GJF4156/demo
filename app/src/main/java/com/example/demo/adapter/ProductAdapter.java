@@ -1,7 +1,6 @@
 package com.example.demo.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.demo.R;
 import com.example.demo.beans.Product;
 
@@ -21,16 +19,11 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHoider>{
 
-    private List<Product> mProducts;
+    private List<Product.ProductInfoListBean> mProducts;
     private OnItemClickListener mListener;
     private Context mContext;
 
-//    public ProductAdapter(List<Product> mProducts, Context mContext) {
-//        this.mProducts = mProducts;
-//        this.mContext = mContext;
-//    }
-
-    public ProductAdapter(List<Product> products, OnItemClickListener listener, Context context) {
+    public ProductAdapter(List<Product.ProductInfoListBean> products, OnItemClickListener listener, Context context) {
         this.mProducts = products;
         this.mListener = listener;
         this.mContext = context;
@@ -44,10 +37,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHoid
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoider holder, int position) {
-        holder.productDescription.setText(mProducts.get(position).getDescription());
-        holder.price.setText(mProducts.get(position).getPrice());
-        holder.sell.setText(mProducts.get(position).getSell());
-        x.image().bind(holder.productImg,mProducts.get(position).getImgUrl());
+        holder.productDescription.setText(mProducts.get(position).getProduct().getDescription());
+        holder.price.setText("￥"+String.valueOf(mProducts.get(position).getProduct().getPrice()));
+        holder.sell.setText("已售"+String.valueOf(mProducts.get(position).getProduct().getSold()));
+        x.image().bind(holder.productImg,mProducts.get(position).getImagesPath().get(0).getImgPath());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
