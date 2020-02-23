@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.example.demo.IconFont.FontIconView
+        android:id="@+id/icont_font_tv"
+        android:layout_marginStart="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recyclableFont"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="25sp"/>
+    <TextView
+        android:id="@+id/rubbish_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="花生壳:"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/sort_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="干垃圾"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+
+</LinearLayout>

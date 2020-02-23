@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">demo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  底部导航栏文本  -->
+    <string name="home_tv_bar">首页</string>
+    <string name="sort_tv_bar">分类</string>
+    <string name="shop_tv_bar">商城</string>
+    <string name="me_tv_bar">我的</string>
+    <!--  中间导航按钮  -->
+    <!--  AR识别  -->
+    <string name="center_AR_bar">&#xe608;</string>
+    <string name="center_AR_text">扫一扫</string>
+    <!--语音识别-->
+    <string name="center_voice_bar">&#xe607;</string>
+    <string name="center_voice_text">语音识别</string>
+    <!--  回收  -->
+    <string name="center_recovery_bar">&#xe633;</string>
+    <string name="center_recovery_text">回收站</string>
+    <!--  回收类别  -->
+    <string name="newspaper">&#xe604;</string>
+    <string name="newspaper_text">报纸</string>
+    <string name="suliao">&#xe63e;</string>
+    <string name="suliao_text">塑料</string>
+    <string name="zhixiang">&#xe61c;</string>
+    <string name="zhixiang_text">纸箱</string>
+    <string name="boli">&#xe62e;</string>
+    <string name="boli_text">玻璃</string>
+    <string name="baoxianhe">&#xe6d6;</string>
+    <string name="baoxianhe_text">保鲜盒</string>
+    <string name="jiuping">&#xe611;</string>
+    <string name="jiuping_text">酒瓶</string>
+    <string name="wanju">&#xe60e;</string>
+    <string name="wanju_text">玩具</string>
+    <string name="dianqi">&#xe634;</string>
+    <string name="dianqi_text">电器</string>
+    <!--  其他文本  -->
+    <string name="kepu">环保新闻</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <!--测试IconFont-->
+    <string name="test">&#xe608;</string>
+    <!--  iconfont  -->
+    <!--  可回收  -->
+    <string name="recyclableFont">&#xe627;</string>
+    <!--  厨余垃圾  -->
+    <string name="kitchenFont">&#xe626;</string>
+    <!--  有害垃圾  -->
+    <string name="hazardousFont">&#xe625;</string>
+    <!--  其他垃圾  -->
+    <string name="otherFont">&#xe624;</string>
+    <!--  干垃圾  -->
+    <string name="dryFont">&#xe628;</string>
+    <!--  湿垃圾  -->
+    <string name="wetFont">&#xe622;</string>
+    <!--  未收录  -->
+    <string name="notincludedFont">&#xe62c;</string>
+</resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f4f4f4"
+    tools:context=".Fragment.SortFragment">
+
+    <TextView
+        android:id="@+id/searchtv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/searchview_radious"
+        android:drawableLeft="@drawable/search"
+        android:padding="5dp"
+        android:hint="搜索"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+    <!--        实现水平画廊效果-->
+<!--    <include layout="@layout/gallery_item" />-->
+    <HorizontalScrollView
+        android:background="#fff"
+        android:id="@+id/hsv_1"
+        android:layout_gravity="center_vertical"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:background="#F4F4F4"
+            android:id="@+id/image_gallery"
+            android:layout_gravity="center_vertical"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!--      android:layout_width="300dp"
+                android:layout_height="480dp"      -->
+
+            <ImageView
+                android:background="@drawable/layer_list"
+                android:id="@+id/kehuishoulaji"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:padding="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/kehuishoulaji" />
+
+            <ImageView
+                android:background="@drawable/layer_list"
+                android:id="@+id/chuyulaji"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:padding="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/chuyulaji" />
+
+            <ImageView
+                android:background="@drawable/layer_list"
+                android:id="@+id/youhailaji"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:padding="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/youhailaji" />
+
+            <ImageView
+                android:background="@drawable/layer_list"
+                android:id="@+id/qitalaji"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:padding="20dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/qitalaji" />
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:orientation="vertical"
+        tools:context=".activity.RecoveryActivity">
+
+        <ImageView
+            android:id="@+id/recovery_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/main" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:background="@color/text_color"
+            android:text="可回收物"/>
+        <include layout="@layout/recovery_bar"/>
+        <Button
+            android:id="@+id/recovery_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_radious"
+            android:text="马上预约上门回收"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+</ScrollView>

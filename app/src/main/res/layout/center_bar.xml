@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="6dp"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:padding="5dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.example.demo.IconFont.FontIconView
+            android:id="@+id/center_ar_icon"
+            style="@style/centerBar"
+            android:text="@string/center_AR_bar"
+            android:textColor="#F44336" />
+
+        <TextView
+            android:id="@+id/center_ar_text"
+            style="@style/centerBar"
+            android:text="@string/center_AR_text"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.example.demo.IconFont.FontIconView
+            android:id="@+id/center_voice_icon"
+            style="@style/centerBar"
+            android:text="@string/center_voice_bar"
+            android:textColor="#6944B3" />
+
+        <TextView
+            android:id="@+id/center_voice_text"
+            style="@style/centerBar"
+            android:text="@string/center_voice_text"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.example.demo.IconFont.FontIconView
+            android:id="@+id/center_recovery_icon"
+            style="@style/centerBar"
+            android:text="@string/center_recovery_bar"
+            android:textColor="#42C948" />
+
+        <TextView
+            android:id="@+id/center_recovery_text"
+            style="@style/centerBar"
+            android:text="@string/center_recovery_text"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/text_color"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/newspaper_icon"
+                style="@style/centerBar"
+                android:text="@string/newspaper"
+                android:textColor="#42C948" />
+
+            <TextView
+                android:id="@+id/center_recovery_text"
+                style="@style/centerBar"
+                android:text="@string/newspaper_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/zhixiang_icon"
+                style="@style/centerBar"
+                android:text="@string/zhixiang"
+                android:textColor="#42C948" />
+
+            <TextView
+                style="@style/centerBar"
+                android:text="@string/zhixiang_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/dianqi_icon"
+                style="@style/centerBar"
+                android:text="@string/dianqi"
+                android:textColor="#42C948" />
+
+            <TextView
+                style="@style/centerBar"
+                android:text="@string/dianqi_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/suliao_icon"
+                style="@style/centerBar"
+                android:text="@string/suliao"
+                android:textColor="#42C948" />
+
+            <TextView
+                style="@style/centerBar"
+                android:text="@string/suliao_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/text_color"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/wanju_icon"
+                style="@style/centerBar"
+                android:text="@string/wanju"
+                android:textColor="#42C948" />
+
+            <TextView
+                style="@style/centerBar"
+                android:text="@string/wanju_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/baoxianhe_icon"
+                style="@style/centerBar"
+                android:text="@string/baoxianhe"
+                android:textColor="#42C948" />
+
+            <TextView
+                style="@style/centerBar"
+                android:text="@string/baoxianhe_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/jiuping_icon"
+                style="@style/centerBar"
+                android:text="@string/jiuping"
+                android:textColor="#42C948" />
+
+            <TextView
+                style="@style/centerBar"
+                android:text="@string/jiuping_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/boli_icon"
+                style="@style/centerBar"
+                android:text="@string/boli"
+                android:textColor="#42C948" />
+
+            <TextView
+                style="@style/centerBar"
+                android:text="@string/boli_text"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

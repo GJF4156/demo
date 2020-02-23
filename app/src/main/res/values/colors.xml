@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0008B6</color>
+    <color name="colorPrimary2">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorIconAndTextNormal">#5F5F5F</color>
+    <color name="colorIconAndTextSelect">#0008B6</color>
+    <color name="colorWhite">#8BC34A</color>
+    <!--  全局背景颜色  -->
+    <color name="background">#f5f5f5</color>
+    <color name="text_color">#fff</color>
+    <!--  底部导航栏文字颜色  -->
+    <color name="select_text_color">#6378f5</color>
+    <color name="no_select_text_color">#8a8a8a</color>
+    <!--  知识小科普文本颜色  -->
+    <color name="Article_title_color">#070707</color>
+    <color name="Article_describe_color">#525252</color>
+    <color name="Article_date_color">#969696</color>
+
+    <!--  分类字体图标颜色  -->
+    <!--  可回收  -->
+    <color name="recyclableFontColor">#6369F3</color>
+    <!--  有害垃圾  -->
+    <color name="hazardousFontColor">#ED706A</color>
+    <!--  厨余垃圾  -->
+    <color name="kitchenFontColor">#2CA874</color>
+    <!--  其他垃圾  -->
+    <color name="otherFontColor">#2B2B29</color>
+    <!--  未收录  -->
+    <color name="notincludedFontColor">#DD870A</color>
+</resources>
