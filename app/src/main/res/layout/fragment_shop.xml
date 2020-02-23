@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--  模拟搜索框  -->
     <TextView
+        android:id="@+id/searchtv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/searchview_radious"
+        android:drawableLeft="@drawable/search"
         android:gravity="center"
-        android:textSize="25dp"
-        android:text="商城" />
+        android:hint="搜索"
+        android:padding="5dp"
+        android:textSize="20sp"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+    <!--轮播图-->
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="商品推荐"
+            android:textColor="#333333"
+            android:textSize="22sp"
+            android:textStyle="normal" />
+
+        <com.example.demo.IconFont.FontIconView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:paddingRight="10dp"
+            android:text="@string/more"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            android:textStyle="italic" />
+    </RelativeLayout>
+    <!--  RecyclerView显示商品  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_Rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
+
 </LinearLayout>

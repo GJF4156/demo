@@ -36,10 +36,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private FontIconView center_ar_icon;
     private FontIconView center_voice_icon;
     private FontIconView center_recovery_icon;
-    private String url;
     private RecyclerView NewsRv;
-    private ImageView NewsImg,imageView;
-    private List<NewsBeans.NewslistBean> newslistBeanList;
+    private ImageView imageView;
 
     private IFragmentHomeP mPresenter;
 
@@ -63,8 +61,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         center_voice_icon=view.findViewById(R.id.center_voice_icon);
         center_recovery_icon=view.findViewById(R.id.center_recovery_icon);
         NewsRv=view.findViewById(R.id.news_rv);
-        NewsImg=view.findViewById(R.id.news_img);
-
         //设置recyclerview的布局管理器
         NewsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         //设置recyclerview每项的分割线

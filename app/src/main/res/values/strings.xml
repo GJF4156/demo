@@ -36,6 +36,8 @@
     <string name="wanju_text">玩具</string>
     <string name="dianqi">&#xe634;</string>
     <string name="dianqi_text">电器</string>
+    <!--  更多  -->
+    <string name="more">&#xe614;</string>
     <!--  其他文本  -->
     <string name="kepu">环保新闻</string>
     <!-- TODO: Remove or change this placeholder text -->
