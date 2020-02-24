@@ -1,12 +1,11 @@
 package com.example.demo.Fragment;
 
-
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.example.demo.Fragment.Presenter.impl.FragmentShopPImpl;
 import com.example.demo.Fragment.View.IFragmentShopV;
 import com.example.demo.R;
 import com.example.demo.Utils.GlideImageLoader;
+import com.example.demo.activity.ContentActivity;
 import com.example.demo.adapter.ProductAdapter;
 import com.example.demo.beans.Product;
 import com.youth.banner.Banner;
@@ -75,8 +75,12 @@ public class ShopFragment extends Fragment implements OnBannerListener, IFragmen
         productRv.setAdapter(new ProductAdapter(productInfoListBeanList, new ProductAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
-                Toast.makeText(getActivity(), productInfoListBeanList.get(position)
-                        .getProduct().getDescription(), Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getActivity(), ContentActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("name","商品详情");
+                intent.putExtra("pid",String.valueOf(productInfoListBeanList.get(position).getProduct().getPid()));
+                System.out.println("==============================================\n\n"+productInfoListBeanList.get(position).getProduct().getPid());
+                startActivity(intent);
             }
         }, getActivity()));
     }

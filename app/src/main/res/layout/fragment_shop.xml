@@ -10,15 +10,15 @@
         android:id="@+id/searchtv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="10dp"
         android:background="@drawable/searchview_radious"
         android:drawableLeft="@drawable/search"
-        android:gravity="center"
-        android:hint="搜索"
         android:padding="5dp"
+        android:hint="搜索"
         android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         tools:ignore="HardcodedText,RtlHardcoded" />
     <!--轮播图-->
     <com.youth.banner.Banner
@@ -32,12 +32,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="5dp">
 
         <TextView
             android:id="@+id/recommend"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_alignParentLeft="true"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
@@ -49,7 +50,7 @@
         <com.example.demo.IconFont.FontIconView
             android:id="@+id/more"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_alignParentRight="true"
             android:gravity="center_vertical"
             android:paddingRight="10dp"

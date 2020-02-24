@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F1F1F1"
+    tools:context=".Fragment.ProductInfoFragment">
+
+    <com.youth.banner.Banner
+        android:id="@+id/product_banner"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFF"
+        android:text="商品描述商品描述商品"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        >
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥299"
+            android:textSize="20dp"
+            android:textColor="#ED3F3F"
+            android:background="#FFF"
+            android:padding="10dp"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已售20件"
+            android:textSize="16sp"
+            android:textColor="#9A9A9A"
+            android:background="#FFF"
+            android:padding="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/format"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择规格"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:background="#FFF"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:padding="10dp"
+        android:text="提示：普通商品享有质量问题7天退货，签收后3个工作日内可换货。其他特殊商品（如手办）的售后以页面说明为准"
+        android:layout_marginTop="10dp"
+        android:textSize="13dp"
+        />
+
+
+
+
+
+
+
+
+</LinearLayout>
