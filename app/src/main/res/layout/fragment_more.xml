@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.MoreFragment">
+
+    <LinearLayout
+        android:id="@+id/more_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="UselessLeaf">
+
+        <TextView
+            android:id="@+id/complex"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="综合"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"/>
+        <TextView
+            android:id="@+id/sold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="销量"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"/>
+        <TextView
+            android:id="@+id/news"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="新品"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/more_Rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/more_tab"
+        android:padding="10dp"/>
+
+
+</RelativeLayout>

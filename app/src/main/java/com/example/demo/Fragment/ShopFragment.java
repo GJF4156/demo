@@ -3,6 +3,8 @@ package com.example.demo.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import com.example.demo.Fragment.Presenter.IFragmentShopP;
 import com.example.demo.Fragment.Presenter.impl.FragmentShopPImpl;
 import com.example.demo.Fragment.View.IFragmentShopV;
+import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
 import com.example.demo.Utils.GlideImageLoader;
 import com.example.demo.activity.ContentActivity;
@@ -28,13 +31,15 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
+ * intent跳转时，intent传值type：0（更多页面） 1（详情页面）
  */
 public class ShopFragment extends Fragment implements OnBannerListener, IFragmentShopV {
     private Banner banner;
     List<String> images = new ArrayList<>();   //定义图片集合
-    List<Product> products = new ArrayList<>();
     private RecyclerView productRv;
     private IFragmentShopP mPresenter;
+
+    private FontIconView more;
 
     public ShopFragment() {
         // Required empty public constructor
@@ -46,7 +51,7 @@ public class ShopFragment extends Fragment implements OnBannerListener, IFragmen
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shop, container, false);
 
-        mPresenter=new FragmentShopPImpl(this::getData);
+        mPresenter=new FragmentShopPImpl(this);
         mPresenter.getData();
 
 
@@ -66,6 +71,21 @@ public class ShopFragment extends Fragment implements OnBannerListener, IFragmen
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        more=view.findViewById(R.id.more);
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","0");
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
     public void OnBannerClick(int position) {
         Toast.makeText(getActivity(), "点击了第" + position + "个", Toast.LENGTH_SHORT).show();
     }
@@ -76,10 +96,8 @@ public class ShopFragment extends Fragment implements OnBannerListener, IFragmen
             @Override
             public void onClick(int position) {
                 Intent intent=new Intent(getActivity(), ContentActivity.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("name","商品详情");
+                intent.putExtra("type","1");
                 intent.putExtra("pid",String.valueOf(productInfoListBeanList.get(position).getProduct().getPid()));
-                System.out.println("==============================================\n\n"+productInfoListBeanList.get(position).getProduct().getPid());
                 startActivity(intent);
             }
         }, getActivity()));

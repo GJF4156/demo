@@ -39,25 +39,27 @@
             android:id="@+id/recommend"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:gravity="center_vertical"
-            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
             android:text="商品推荐"
             android:textColor="#333333"
             android:textSize="22sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            tools:ignore="HardcodedText,RtlSymmetry" />
 
         <com.example.demo.IconFont.FontIconView
             android:id="@+id/more"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:gravity="center_vertical"
-            android:paddingRight="10dp"
+            android:paddingEnd="10dp"
             android:text="@string/more"
             android:textColor="#333333"
-            android:textSize="24sp"
-            android:textStyle="italic" />
+            android:textSize="22sp"
+            android:textStyle="italic"
+            tools:ignore="RelativeOverlap,RtlSymmetry" />
     </RelativeLayout>
     <!--  RecyclerView显示商品  -->
     <androidx.recyclerview.widget.RecyclerView

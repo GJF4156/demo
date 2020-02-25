@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class ProductInfoFragment extends Fragment implements IFragmentProductInfoV {
     private Banner banner;
-    private TextView description,price,format,number;
+    private TextView description, price, format, number;//format表示规格
     List<ProductInfo.ProductInfoBean.ImagesPathBean> images1 = new ArrayList<>();   //定义图片集合
     List<String> images = new ArrayList<>();
     private IFragmentProductInfoP mPresenter;
@@ -38,8 +38,8 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         View view = inflater.inflate(R.layout.fragment_product_info, container, false);
         mPresenter = new FragmentProductInfoPImpl(this);
         Bundle bundle = this.getArguments();//得到从Activity传来的数据
-        String mess = bundle.getString("pid");
-        mPresenter.getData(mess);
+        String pid = bundle.getString("pid");
+        mPresenter.getData(pid);
         return view;
     }
 
@@ -47,10 +47,10 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         banner = view.findViewById(R.id.product_banner);
-        description=view.findViewById(R.id.description);
-        price=view.findViewById(R.id.price);
-        format=view.findViewById(R.id.format);
-        number=view.findViewById(R.id.number);
+        description = view.findViewById(R.id.description);
+        price = view.findViewById(R.id.price);
+        format = view.findViewById(R.id.format);
+        number = view.findViewById(R.id.number);
     }
 
     @Override
@@ -63,9 +63,8 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         banner.setImages(images);  //设置banner中显示图片
         banner.setDelayTime(3000);
         banner.start();  //设置完毕后调用
-
         description.setText(productInfoBeans.getProduct().getDescription());
-        price.setText("￥"+String.valueOf(productInfoBeans.getProduct().getPrice()));
-        number.setText("已售"+String.valueOf(productInfoBeans.getProduct().getSold())+"件");
+        price.setText("￥" + String.valueOf(productInfoBeans.getProduct().getPrice()));
+        number.setText("已售" + String.valueOf(productInfoBeans.getProduct().getSold()) + "件");
     }
 }
