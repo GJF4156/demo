@@ -94,6 +94,7 @@ public class MoreFragment extends Fragment implements IFragmentMoreV {
 
     @Override
     public void getData(List<Product.ProductInfoListBean> productInfoListBeanList) {
+        //实现选项卡功能，点击时，将选中的textview加边框，未选中的不加
         switch (fla){
             case 1:
                 complex.setBackground(getActivity().getDrawable(R.drawable.border));
