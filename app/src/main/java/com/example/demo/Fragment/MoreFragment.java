@@ -124,7 +124,7 @@ public class MoreFragment extends Fragment implements IFragmentMoreV {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_frameLayout, productInfoFragment)
-                        .addToBackStack(null)
+                        .addToBackStack(null)//加入回退栈，按back键回到上一个fragment
                         .commitAllowingStateLoss();
             }
         }));
