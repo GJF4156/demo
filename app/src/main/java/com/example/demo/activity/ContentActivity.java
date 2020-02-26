@@ -33,7 +33,7 @@ public class ContentActivity extends AppCompatActivity {
         int a = Integer.parseInt(type);
         switch (a) {
             case 0:
-                toolbar.setTitle("E商城");
+                toolbar.setTitle("");
                 moreFragment = new MoreFragment();
                 getSupportFragmentManager()
                         .beginTransaction()
@@ -41,7 +41,7 @@ public class ContentActivity extends AppCompatActivity {
                         .commitAllowingStateLoss();
                 break;
             case 1:
-                toolbar.setTitle("商品详情");
+                toolbar.setTitle("");
                 productInfoFragment = new ProductInfoFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("pid", intent.getStringExtra("pid"));
@@ -66,4 +66,5 @@ public class ContentActivity extends AppCompatActivity {
         });
 
     }
+
 }
