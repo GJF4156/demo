@@ -58,4 +58,8 @@
     <string name="wetFont">&#xe622;</string>
     <!--  未收录  -->
     <string name="notincludedFont">&#xe62c;</string>
+    <!--  客服  -->
+    <string name="kefu">&#xe60f;</string>
+    <!--  购物车  -->
+    <string name="shop">&#xe602;</string>
 </resources>

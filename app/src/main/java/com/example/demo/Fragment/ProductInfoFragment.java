@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.demo.Fragment.Presenter.IFragmentProductInfoP;
 import com.example.demo.Fragment.Presenter.impl.FragmentProductInfoPImpl;
@@ -25,9 +27,10 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProductInfoFragment extends Fragment implements IFragmentProductInfoV {
+public class ProductInfoFragment extends Fragment implements IFragmentProductInfoV, View.OnClickListener {
     private Banner banner;
-    private TextView description, price, format, number;//format表示规格
+    private TextView description, price, format, number, kefu, car;//format表示规格
+    private Button addCar, buy;
     List<ProductInfo.ProductInfoBean.ImagesPathBean> images1 = new ArrayList<>();   //定义图片集合
     List<String> images = new ArrayList<>();
     private IFragmentProductInfoP mPresenter;
@@ -51,6 +54,16 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         price = view.findViewById(R.id.price);
         format = view.findViewById(R.id.format);
         number = view.findViewById(R.id.number);
+        kefu = view.findViewById(R.id.kefu);
+        car = view.findViewById(R.id.car);
+        addCar = view.findViewById(R.id.add_car);
+        buy = view.findViewById(R.id.buy);
+
+        format.setOnClickListener(this);
+        kefu.setOnClickListener(this);
+        car.setOnClickListener(this);
+        addCar.setOnClickListener(this);
+        buy.setOnClickListener(this);
     }
 
     @Override
@@ -66,5 +79,28 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         description.setText(productInfoBeans.getProduct().getDescription());
         price.setText("￥" + String.valueOf(productInfoBeans.getProduct().getPrice()));
         number.setText("已售" + String.valueOf(productInfoBeans.getProduct().getSold()) + "件");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.format:
+                Toast.makeText(getActivity(), "规格", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.kefu:
+                Toast.makeText(getActivity(), "客服", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.car:
+                Toast.makeText(getActivity(), "购物车", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.add_car:
+                Toast.makeText(getActivity(), "添加购物车", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.buy:
+                Toast.makeText(getActivity(), "立即购买", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
     }
 }
