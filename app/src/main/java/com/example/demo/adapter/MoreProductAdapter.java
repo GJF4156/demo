@@ -42,6 +42,7 @@ public class MoreProductAdapter extends RecyclerView.Adapter<MoreProductAdapter.
     public void onBindViewHolder(@NonNull MoreProductAdapter.ViewHolder holder, int position) {
         holder.title.setText(mProducts.get(position).getProduct().getDescription());
         holder.price.setText("￥"+String.valueOf(mProducts.get(position).getProduct().getPrice()));
+        holder.sold.setText("销量"+String.valueOf(mProducts.get(position).getProduct().getSold()));
         x.image().bind(holder.image, mProducts.get(position).getImagesPath().get(0).getImgPath());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +59,7 @@ public class MoreProductAdapter extends RecyclerView.Adapter<MoreProductAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView title, price;
+        private TextView title, price,sold;
         private ImageView image;
 
         public ViewHolder(@NonNull View itemView) {
@@ -66,6 +67,7 @@ public class MoreProductAdapter extends RecyclerView.Adapter<MoreProductAdapter.
             title = itemView.findViewById(R.id.product_title);
             price = itemView.findViewById(R.id.product_price);
             image = itemView.findViewById(R.id.product_img);
+            sold=itemView.findViewById(R.id.product_sold);
         }
     }
 

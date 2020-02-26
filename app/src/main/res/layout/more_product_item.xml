@@ -31,17 +31,36 @@
             android:text="商品描述商品描述商品描述商品描述"
             tools:ignore="NestedWeights,RtlHardcoded" />
 
-        <TextView
-            android:id="@+id/product_price"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical"
-            android:text="￥200"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#D45F42"
-            tools:ignore="RtlHardcoded" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:text="￥200"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:textColor="#D45F42"
+                tools:ignore="RtlHardcoded" />
+            <TextView
+                android:id="@+id/product_sold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:text="销量"
+                android:textSize="14sp"
+                android:textColor="#9A9A9A"
+                tools:ignore="RtlHardcoded" />
+        </RelativeLayout>
+
     </LinearLayout>
 </LinearLayout>
