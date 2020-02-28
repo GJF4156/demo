@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 
 import com.example.demo.R;
-import com.example.demo.beans.ProductInfo;
 import com.example.demo.beans.ShoppingCartBean;
 
 import org.xutils.x;
@@ -111,8 +110,8 @@ public class ShoppingCartAdapter extends BaseAdapter {
 //            holder.tvCommodityAttr.setText(shoppingCartBean.getDressSize() + "");//尺码
 //        }
         holder.tvCommodityName.setText(shoppingCartBean.getShoppingName());//商品名
-        holder.tvCommodityPrice.setText(shoppingCartBean.getPrice() + "");//价格
-        holder.tvCommodityNum.setText(" X" + shoppingCartBean.getCount() + "");//数量
+        holder.tvCommodityPrice.setText("￥"+shoppingCartBean.getPrice() + "");//价格
+        holder.tvCommodityNum.setText(" x" + shoppingCartBean.getCount() + "");//数量
         holder.tvCommodityShowNum.setText(shoppingCartBean.getCount() + "");
         x.image().bind(holder.ivShowPic,shoppingCartBean.getImageUrl());
 
@@ -144,7 +143,6 @@ public class ShoppingCartAdapter extends BaseAdapter {
             alert.setButton(DialogInterface.BUTTON_POSITIVE, "确定",
                     (dialog, which) -> {
                         modifyCountInterface.childDelete(position);//删除 目前只是从item中移除
-
                     });
             alert.show();
         });

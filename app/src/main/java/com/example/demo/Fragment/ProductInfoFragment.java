@@ -20,22 +20,32 @@ import com.example.demo.Fragment.View.IFragmentProductInfoV;
 import com.example.demo.R;
 import com.example.demo.Utils.GlideImageLoader;
 import com.example.demo.beans.ProductInfo;
+import com.example.demo.beans.ShoppingCartBean;
 import com.youth.banner.Banner;
+
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProductInfoFragment extends Fragment implements IFragmentProductInfoV, View.OnClickListener {
     private Banner banner;
-    private TextView description, price, format, number, kefu, car,tvTitle,btHeaderRight;//format表示规格
+    private TextView description, price, format, number, kefu, car, tvTitle, btHeaderRight;//format表示规格
     private Button addCar, buy;
-    List<ProductInfo.ProductInfoBean.ImagesPathBean> images1 = new ArrayList<>();   //定义图片集合
-    List<String> images = new ArrayList<>();
     private ProductInfo.ProductInfoBean.ProductBean products;
     private IFragmentProductInfoP mPresenter;
     private CarFragment carFragment;
+    private DbManager db;
+    private ShoppingCartBean shoppingCartBean = new ShoppingCartBean();
+    List<ProductInfo.ProductInfoBean.ImagesPathBean> images1 = new ArrayList<>();   //定义图片集合
+    List<ShoppingCartBean> shoppingCartBeanList = new ArrayList<>();
+    List<String> images = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,7 +54,31 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         Bundle bundle = this.getArguments();//得到从Activity传来的数据
         String pid = bundle.getString("pid");
         mPresenter.getData(pid);
+        //初始化本地数据库
+        initDb();
+
         return view;
+    }
+
+    private void initDb() {
+        //本地数据的初始化
+        DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
+                .setDbName("shoppingCar") //设置数据库名
+                .setDbVersion(1) //设置数据库版本
+                .setDbOpenListener(new DbManager.DbOpenListener() {
+                    @Override
+                    public void onDbOpened(DbManager db) {
+                        db.getDatabase().enableWriteAheadLogging();
+                        //开启WAL, 对写入加速提升巨大(作者原话)
+                    }
+                })
+                .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
+                    @Override
+                    public void onUpgrade(DbManager db, int oldVersion, int newVersion) {
+                        //数据库升级操作
+                    }
+                });
+        db = x.getDb(daoConfig);
     }
 
     @Override
@@ -59,8 +93,8 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         car = view.findViewById(R.id.car);
         addCar = view.findViewById(R.id.add_car);
         buy = view.findViewById(R.id.buy);
-        tvTitle=getActivity().findViewById(R.id.tv_title);
-        btHeaderRight=getActivity().findViewById(R.id.bt_header_right);
+        tvTitle = getActivity().findViewById(R.id.tv_title);
+        btHeaderRight = getActivity().findViewById(R.id.bt_header_right);
         tvTitle.setText("商品详情");
         btHeaderRight.setVisibility(view.GONE);
         format.setOnClickListener(this);
@@ -74,10 +108,16 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
     @Override
     public void getData(ProductInfo.ProductInfoBean productInfoBeans) {
         images1 = productInfoBeans.getImagesPath();
-         products = productInfoBeans.getProduct();
+        products = productInfoBeans.getProduct();
         for (int i = 0; i < images1.size(); i++) {
             images.add(images1.get(i).getImgPath());
         }
+        shoppingCartBean.setId(productInfoBeans.getProduct().getPid());
+        shoppingCartBean.setShoppingName(productInfoBeans.getProduct().getDescription());
+        shoppingCartBean.setCount(1);//默认数量均为1
+        shoppingCartBean.setPrice(productInfoBeans.getProduct().getPrice());
+        shoppingCartBean.setDressSize(20);
+        shoppingCartBean.setImageUrl(images1.get(0).getImgPath());
         banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
         banner.setImages(images);  //设置banner中显示图片
         banner.setDelayTime(3000);
@@ -97,21 +137,27 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
                 Toast.makeText(getActivity(), "客服", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.car:
-//                Toast.makeText(getActivity(), "购物车", Toast.LENGTH_SHORT).show();
-                carFragment=new CarFragment();
-                Bundle bundle = new Bundle();
-                String pid = String.valueOf(products.getPid());
-                bundle.putString("pid", pid);
-                carFragment.setArguments(bundle);
+                carFragment = new CarFragment();
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.content_frameLayout,carFragment)
+                        .replace(R.id.content_frameLayout, carFragment)
                         .addToBackStack(null)
                         .commitAllowingStateLoss();
                 break;
             case R.id.add_car:
-                Toast.makeText(getActivity(), "添加购物车", Toast.LENGTH_SHORT).show();
+                try {
+                    ShoppingCartBean byId = db.findById(ShoppingCartBean.class, shoppingCartBean.getId());
+                    if (byId==null){
+                        db.save(shoppingCartBean);
+                        Toast.makeText(getActivity(), "添加成功", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(getActivity(), "已在购物车", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (DbException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.buy:
                 Toast.makeText(getActivity(), "立即购买", Toast.LENGTH_SHORT).show();
