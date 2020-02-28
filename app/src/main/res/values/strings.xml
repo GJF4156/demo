@@ -62,4 +62,5 @@
     <string name="kefu">&#xe60f;</string>
     <!--  购物车  -->
     <string name="shop">&#xe602;</string>
+    <string name="ddhk_header_back">返回</string>
 </resources>

@@ -1,10 +1,13 @@
 package com.example.demo.base;
 
+import android.content.Context;
+
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 public class BaseModel implements Callback.CommonCallback<String> {
+    private Context context;
 
     public void loadData(String url) {
         RequestParams params = new RequestParams(url);
@@ -13,7 +16,6 @@ public class BaseModel implements Callback.CommonCallback<String> {
 
     @Override
     public void onSuccess(String result) {
-
     }
 
     @Override
@@ -28,6 +30,5 @@ public class BaseModel implements Callback.CommonCallback<String> {
 
     @Override
     public void onFinished() {
-
     }
 }

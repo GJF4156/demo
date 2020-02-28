@@ -1,5 +1,7 @@
 package com.example.demo.Fragment.Presenter.impl;
 
+import android.content.Context;
+
 import com.example.demo.Fragment.Model.IFragmentHomeM;
 import com.example.demo.Fragment.Model.impl.FragmentHomeMImpl;
 import com.example.demo.Fragment.Presenter.IFragmentHomeP;
@@ -19,8 +21,8 @@ public class FragmentHomePImpl implements IFragmentHomeP {
     }
 
     @Override
-    public void getData() {
-        mModel.getData();
+    public void getData(Context context) {
+        mModel.getData(context);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.demo.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,18 +24,18 @@ import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProductInfoFragment extends Fragment implements IFragmentProductInfoV, View.OnClickListener {
     private Banner banner;
-    private TextView description, price, format, number, kefu, car;//format表示规格
+    private TextView description, price, format, number, kefu, car,tvTitle,btHeaderRight;//format表示规格
     private Button addCar, buy;
     List<ProductInfo.ProductInfoBean.ImagesPathBean> images1 = new ArrayList<>();   //定义图片集合
     List<String> images = new ArrayList<>();
+    private ProductInfo.ProductInfoBean.ProductBean products;
     private IFragmentProductInfoP mPresenter;
-
+    private CarFragment carFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,7 +59,10 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         car = view.findViewById(R.id.car);
         addCar = view.findViewById(R.id.add_car);
         buy = view.findViewById(R.id.buy);
-
+        tvTitle=getActivity().findViewById(R.id.tv_title);
+        btHeaderRight=getActivity().findViewById(R.id.bt_header_right);
+        tvTitle.setText("商品详情");
+        btHeaderRight.setVisibility(view.GONE);
         format.setOnClickListener(this);
         kefu.setOnClickListener(this);
         car.setOnClickListener(this);
@@ -66,9 +70,11 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         buy.setOnClickListener(this);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void getData(ProductInfo.ProductInfoBean productInfoBeans) {
         images1 = productInfoBeans.getImagesPath();
+         products = productInfoBeans.getProduct();
         for (int i = 0; i < images1.size(); i++) {
             images.add(images1.get(i).getImgPath());
         }
@@ -91,7 +97,18 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
                 Toast.makeText(getActivity(), "客服", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.car:
-                Toast.makeText(getActivity(), "购物车", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "购物车", Toast.LENGTH_SHORT).show();
+                carFragment=new CarFragment();
+                Bundle bundle = new Bundle();
+                String pid = String.valueOf(products.getPid());
+                bundle.putString("pid", pid);
+                carFragment.setArguments(bundle);
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,carFragment)
+                        .addToBackStack(null)
+                        .commitAllowingStateLoss();
                 break;
             case R.id.add_car:
                 Toast.makeText(getActivity(), "添加购物车", Toast.LENGTH_SHORT).show();

@@ -2,6 +2,7 @@ package com.example.demo.base;
 
 import androidx.fragment.app.Fragment;
 
+
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
@@ -19,7 +20,6 @@ public class BaseFragment extends Fragment implements Callback.CommonCallback<St
     //    获取数据成功时，会回调的接口
     @Override
     public void onSuccess(String result) {
-
     }
     //  获取数据失败时，会调用的接口
     @Override
@@ -34,6 +34,5 @@ public class BaseFragment extends Fragment implements Callback.CommonCallback<St
     //  请求完成后，会回调的接口
     @Override
     public void onFinished() {
-
     }
 }

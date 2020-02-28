@@ -3,19 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.ContentActivity">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolBar"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        app:titleTextAppearance="@style/Toolbar.TitleText"
-        />
+    <include
+        android:id="@+id/shopping_title"
+        layout="@layout/layout_title" />
     <FrameLayout
         android:layout_marginTop="2dp"
         android:id="@+id/content_frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolBar"
+        android:layout_below="@+id/shopping_title"
         />
 </RelativeLayout>

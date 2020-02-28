@@ -29,4 +29,9 @@
     <color name="otherFontColor">#2B2B29</color>
     <!--  未收录  -->
     <color name="notincludedFontColor">#DD870A</color>
+    <color name="purple_button">#835091</color>
+    <color name="gray">#808080</color>
+    <color name="qianhui">#E0E0E0</color>
+    <color name="black">#000000</color>
+    <color name="white_c">#FFFFFF</color>
 </resources>

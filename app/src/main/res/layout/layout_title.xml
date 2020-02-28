@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/purple_button"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/btn_back"
+        android:layout_width="80.0dip"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@null"
+        android:paddingStart="10dp"
+        android:paddingTop="20dp"
+        android:text="@string/ddhk_header_back"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="购物车"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/bt_header_right"
+        android:layout_width="50dip"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@null"
+        android:paddingStart="10dp"
+        android:paddingTop="20dip"
+        android:text="编辑"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:ignore="RtlSymmetry" />
+
+
+</RelativeLayout>

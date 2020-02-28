@@ -1,5 +1,7 @@
 package com.example.demo.Fragment.Model.impl;
 
+import android.content.Context;
+
 import com.example.demo.Fragment.Model.IFragmentHomeM;
 import com.example.demo.Fragment.Presenter.IFragmentHomeP;
 import com.example.demo.base.BaseModel;
@@ -11,13 +13,15 @@ import java.util.List;
 public class FragmentHomeMImpl extends BaseModel implements IFragmentHomeM {
 
     private IFragmentHomeP mPresenter;
+    private Context mContext;
 
     public FragmentHomeMImpl(IFragmentHomeP presenter) {
         this.mPresenter = presenter;
     }
 
     @Override
-    public void getData() {
+    public void getData(Context context) {
+        mContext=context;
         String url="http://api.tianapi.com/huanbao/index?key=a24ff874e046c94eb472e3a7692900e3&num=20";
         loadData(url);
     }

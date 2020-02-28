@@ -1,6 +1,7 @@
 package com.example.demo.Fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -49,7 +50,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         mPresenter=new FragmentHomePImpl(this);
-        mPresenter.getData();
+        mPresenter.getData(getActivity());
         //初始化数据
         init(view);
         return view;

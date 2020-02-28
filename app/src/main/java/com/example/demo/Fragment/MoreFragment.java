@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class MoreFragment extends Fragment implements IFragmentMoreV {
-    private TextView complex, sold, news;
+    private TextView complex, sold, news,tvTitle,btHeaderRight;
     private RecyclerView moreRv;
     private ProductInfoFragment productInfoFragment;
     //因为和ShopFragment需要的数据一样，所以这里用ShopFragment的MVP层
@@ -45,6 +46,7 @@ public class MoreFragment extends Fragment implements IFragmentMoreV {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_more, container, false);
+
         mPresenter = new FragmentMorePImpl(this);
         mPresenter.getData(url);
 
@@ -58,33 +60,31 @@ public class MoreFragment extends Fragment implements IFragmentMoreV {
         complex = view.findViewById(R.id.complex);
         sold = view.findViewById(R.id.sold);
         news = view.findViewById(R.id.news);
-        complex.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                url = "http://129.211.75.130:8080/demo/products/findAll";
-                mPresenter.getData(url);
-                complex.setBackground(getActivity().getDrawable(R.drawable.border));
-                fla=1;
-            }
+        tvTitle=getActivity().findViewById(R.id.tv_title);
+        btHeaderRight=getActivity().findViewById(R.id.bt_header_right);
+
+
+        tvTitle.setText("商城");
+        btHeaderRight.setVisibility(view.GONE);
+        complex.setOnClickListener(v -> {
+            url = "http://129.211.75.130:8080/demo/products/findAll";
+            mPresenter.getData(url);
+            complex.setBackground(getActivity().getDrawable(R.drawable.border));
+            fla=1;
         });
-        sold.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                url = "http://129.211.75.130:8080/demo/products/findOrderBySold ";
-                mPresenter.getData(url);
-                sold.setBackground(getActivity().getDrawable(R.drawable.border));
-                fla=2;
-            }
+        sold.setOnClickListener(v -> {
+            url = "http://129.211.75.130:8080/demo/products/findOrderBySold ";
+            mPresenter.getData(url);
+            sold.setBackground(getActivity().getDrawable(R.drawable.border));
+            fla=2;
         });
-        news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                url = "http://129.211.75.130:8080/demo/products/findAll";
-                mPresenter.getData(url);
-                news.setBackground(getActivity().getDrawable(R.drawable.border));
-                fla=3;
-            }
+        news.setOnClickListener(v -> {
+            url = "http://129.211.75.130:8080/demo/products/findAll";
+            mPresenter.getData(url);
+            news.setBackground(getActivity().getDrawable(R.drawable.border));
+            fla=3;
         });
+
 
 
         moreRv.setLayoutManager(new LinearLayoutManager(getActivity()));
