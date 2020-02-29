@@ -16,12 +16,16 @@ import com.example.demo.Fragment.ProductInfoFragment;
 import com.example.demo.MainActivity;
 import com.example.demo.R;
 
+import org.xutils.DbManager;
+
 import java.util.Objects;
+
+import static android.view.View.GONE;
 
 public class ContentActivity extends AppCompatActivity {
     private ProductInfoFragment productInfoFragment;
     private MoreFragment moreFragment;
-    private TextView btBack;
+    private TextView btBack,bt_header_right;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

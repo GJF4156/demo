@@ -40,7 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecoveryActivity" />
+        <activity android:name=".activity.RecoveryActivity" />
         <activity android:name=".MainActivity" />
     </application>
 

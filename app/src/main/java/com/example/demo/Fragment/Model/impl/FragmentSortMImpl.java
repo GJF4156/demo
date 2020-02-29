@@ -4,6 +4,7 @@ import com.example.demo.Fragment.Model.IFragmentSortM;
 import com.example.demo.Fragment.Presenter.IFragmentSortP;
 import com.example.demo.base.BaseModel;
 import com.example.demo.beans.SortsBean;
+import com.example.demo.model.Model;
 import com.google.gson.Gson;
 
 public class FragmentSortMImpl extends BaseModel implements IFragmentSortM {
@@ -16,10 +17,15 @@ public class FragmentSortMImpl extends BaseModel implements IFragmentSortM {
 
     @Override
     public void getData(int type) {
-        String url=url1+type;
-        loadData(url);
-        url=url1;
-        System.out.println(url);
+        Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
+            @Override
+            public void run() {
+                String url=url1+type;
+                loadData(url);
+                url=url1;
+                System.out.println(url);
+            }
+        });
     }
 
     @Override

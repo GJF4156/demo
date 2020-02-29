@@ -4,6 +4,7 @@ import com.example.demo.Fragment.Model.IFragmentMoreM;
 import com.example.demo.Fragment.Presenter.IFragmentMoreP;
 import com.example.demo.base.BaseModel;
 import com.example.demo.beans.Product;
+import com.example.demo.model.Model;
 import com.google.gson.Gson;
 
 public class FragmentMoreMImpl extends BaseModel implements IFragmentMoreM {
@@ -15,13 +16,17 @@ public class FragmentMoreMImpl extends BaseModel implements IFragmentMoreM {
 
     @Override
     public void getData(String url) {
-        loadData(url);
+        Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
+            @Override
+            public void run() {
+                loadData(url);
+            }
+        });
     }
 
     @Override
     public void onSuccess(String result) {
         Product product=new Gson().fromJson(result,Product.class);
         mPresenter.returnData(product.getProductInfoList());
-
     }
 }

@@ -1,7 +1,6 @@
 package com.example.demo.Fragment;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -21,7 +20,7 @@ import com.example.demo.Fragment.Presenter.impl.FragmentHomePImpl;
 import com.example.demo.Fragment.View.IFragmentHomeV;
 import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
-import com.example.demo.RecoveryActivity;
+import com.example.demo.activity.RecoveryActivity;
 import com.example.demo.Utils.DividerItemDecoration;
 import com.example.demo.Utils.ImageUtils;
 import com.example.demo.activity.SpeachActivity;

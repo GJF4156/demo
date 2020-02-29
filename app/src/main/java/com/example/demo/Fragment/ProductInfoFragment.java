@@ -27,6 +27,7 @@ import org.xutils.DbManager;
 import org.xutils.ex.DbException;
 import org.xutils.x;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,18 +66,12 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
         DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
                 .setDbName("shoppingCar") //设置数据库名
                 .setDbVersion(1) //设置数据库版本
-                .setDbOpenListener(new DbManager.DbOpenListener() {
-                    @Override
-                    public void onDbOpened(DbManager db) {
-                        db.getDatabase().enableWriteAheadLogging();
-                        //开启WAL, 对写入加速提升巨大(作者原话)
-                    }
+                .setDbOpenListener(db -> {
+                    db.getDatabase().enableWriteAheadLogging();
+                    //开启WAL, 对写入加速提升巨大(作者原话)
                 })
-                .setDbUpgradeListener(new DbManager.DbUpgradeListener() {
-                    @Override
-                    public void onUpgrade(DbManager db, int oldVersion, int newVersion) {
-                        //数据库升级操作
-                    }
+                .setDbUpgradeListener((db, oldVersion, newVersion) -> {
+                    //数据库升级操作
                 });
         db = x.getDb(daoConfig);
     }
@@ -160,7 +155,17 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
                 }
                 break;
             case R.id.buy:
-                Toast.makeText(getActivity(), "立即购买", Toast.LENGTH_SHORT).show();
+                List<ShoppingCartBean> list=new ArrayList<>();
+                list.add(shoppingCartBean);
+                PayFragment payFragment=new PayFragment();
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("shoppingCartBeanList", (Serializable) list);
+                payFragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,payFragment)
+                        .addToBackStack(null)
+                        .commitAllowingStateLoss();
                 break;
             default:
                 break;

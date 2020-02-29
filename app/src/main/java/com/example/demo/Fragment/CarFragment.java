@@ -26,6 +26,7 @@ import org.xutils.ex.DbException;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,10 +83,10 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
 
         tvTitle = getActivity().findViewById(R.id.tv_title);
         btHeaderRight = getActivity().findViewById(R.id.bt_header_right);
-        ckAll=view.findViewById(R.id.ck_all);
-        tvShowPrice=view.findViewById(R.id.tv_show_price);
-        tvSettlement=view.findViewById(R.id.tv_settlement);
-        list_shopping_cart=view.findViewById(R.id.list_shopping_cart);
+        ckAll = view.findViewById(R.id.ck_all);
+        tvShowPrice = view.findViewById(R.id.tv_show_price);
+        tvSettlement = view.findViewById(R.id.tv_settlement);
+        list_shopping_cart = view.findViewById(R.id.list_shopping_cart);
 
         tvTitle.setText("购物车");
         btHeaderRight.setVisibility(view.VISIBLE);
@@ -157,23 +158,34 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
      * 结算订单、支付
      */
     private void lementOnder() {
+        List<ShoppingCartBean> list = new ArrayList<>();
         //选中的需要提交的商品清单
         for (ShoppingCartBean bean : shoppingCartBeanList) {
             boolean choosed = bean.isChoosed();
             if (choosed) {
+                list.add(bean);
                 String shoppingName = bean.getShoppingName();
                 int count = bean.getCount();
                 double price = bean.getPrice();
                 int size = bean.getDressSize();
-                //String attribute = bean.getAttribute();
                 int id = bean.getId();
-                //Log.d(TAG,id+"----id---"+shoppingName+"---"+count+"---"+price+"--size----"+size+"--attr---"+attribute);
             }
         }
-        //ToastUtil.showL(this,"总价："+totalPrice);
-        Toast.makeText(getActivity(),String.valueOf(totalPrice),Toast.LENGTH_SHORT).show();
-
-        //跳转到支付界面
+        if (list.size()>0) {
+            PayFragment payFragment = new PayFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("shoppingCartBeanList", (Serializable) list);
+            payFragment.setArguments(bundle);
+            //跳转到支付界面
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .hide(this)
+                    .add(R.id.content_frameLayout, payFragment)
+                    .addToBackStack(null)
+                    .commitAllowingStateLoss();
+        } else {
+            Toast.makeText(getActivity(),"你还没有选择商品哟！",Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -198,6 +210,7 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
 
     /**
      * 单选
+     *
      * @param position  组元素位置
      * @param isChecked 组元素选中与否
      */
@@ -211,8 +224,10 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
         shoppingCartAdapter.notifyDataSetChanged();
         statistics();
     }
+
     /**
      * 遍历list集合
+     *
      * @return
      */
     private boolean isAllCheck() {
@@ -226,6 +241,7 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
 
     /**
      * 增加
+     *
      * @param position      组元素位置
      * @param showCountView 用于展示变化后数量的View
      * @param isChecked     子元素选中与否
@@ -243,7 +259,8 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
 
     /**
      * 删减
-     *      *
+     * *
+     *
      * @param position      组元素位置
      * @param showCountView 用于展示变化后数量的View
      * @param isChecked     子元素选中与否

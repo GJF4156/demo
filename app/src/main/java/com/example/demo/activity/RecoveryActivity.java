@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.demo.IconFont.FontIconView;
+import com.example.demo.R;
 
 public class RecoveryActivity extends AppCompatActivity implements View.OnClickListener {
     private FontIconView newspaper_icon;

@@ -4,6 +4,7 @@ import com.example.demo.Fragment.Model.IFragmentShopM;
 import com.example.demo.Fragment.Presenter.IFragmentShopP;
 import com.example.demo.base.BaseModel;
 import com.example.demo.beans.Product;
+import com.example.demo.model.Model;
 import com.google.gson.Gson;
 
 public class FragmentShopMImpl extends BaseModel implements IFragmentShopM {
@@ -16,8 +17,14 @@ public class FragmentShopMImpl extends BaseModel implements IFragmentShopM {
 
     @Override
     public void getData() {
-        String url="http://129.211.75.130:8080/demo/products/findAll";
-        loadData(url);
+
+        Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
+            @Override
+            public void run() {
+                String url="http://129.211.75.130:8080/demo/products/findAll";
+                loadData(url);
+            }
+        });
     }
 
     @Override

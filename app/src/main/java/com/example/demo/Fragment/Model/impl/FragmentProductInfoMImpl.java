@@ -4,12 +4,13 @@ import com.example.demo.Fragment.Model.IFragmentProductInfoM;
 import com.example.demo.Fragment.Presenter.IFragmentProductInfoP;
 import com.example.demo.base.BaseModel;
 import com.example.demo.beans.ProductInfo;
+import com.example.demo.model.Model;
 import com.google.gson.Gson;
 
 public class FragmentProductInfoMImpl extends BaseModel implements IFragmentProductInfoM {
 
     private IFragmentProductInfoP mPresenter;
-    private String url="http://129.211.75.130:8080/demo/products/findById?pid=";
+
 
     public FragmentProductInfoMImpl(IFragmentProductInfoP presenter) {
         this.mPresenter = presenter;
@@ -18,7 +19,13 @@ public class FragmentProductInfoMImpl extends BaseModel implements IFragmentProd
     @Override
     public void getData(String pid) {
 
-        loadData(url+pid);
+        Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
+            @Override
+            public void run() {
+                String url="http://129.211.75.130:8080/demo/products/findById?pid=";
+                loadData(url+pid);
+            }
+        });
 
     }
 
