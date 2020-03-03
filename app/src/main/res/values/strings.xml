@@ -63,4 +63,27 @@
     <!--  购物车  -->
     <string name="shop">&#xe602;</string>
     <string name="ddhk_header_back">返回</string>
+    <string name="mine_username">Reflection</string>
+    <string name="mine_phone">173****4565</string>
+    <string name="mine_description">致力于回收，让生活更美好</string>
+    <string name="mine_card">我的收藏</string>
+    <string name="mine_card_num">20</string>
+    <string name="mine_card_desc">条收藏</string>
+    <string name="mine_card2">我的订单</string>
+    <string name="mine_card2_num">5</string>
+    <string name="mine_card2_desc">个订单</string>
+    <string name="mine_jifen">积分</string>
+    <string name="mine_info">通知</string>
+    <string name="mine_setting">设置</string>
+    <string name="mine_about">关于我们</string>
+    <string name="mine_img_sign">&#xe654;</string>
+    <string name="mine_img_minsetting">&#xe613;</string>
+    <string name="mine_img_arrowToRight">&#xe616;</string>
+    <string name="sign_img_2">&#xe668;</string>
+    <string name="sign">签到</string>
+    <string name="sign_tv1">已连续签到天数</string>
+    <string name="sign_tv2">3</string>
+    <string name="sign_tv4">连续登陆7天将获得奖励</string>
+    <string name="sign_tv3">确认</string>
+    <string name="sign_img_1">&#xe681;</string>
 </resources>

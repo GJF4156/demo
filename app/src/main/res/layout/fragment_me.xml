@@ -1,17 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mine_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.MeFragment">
+    android:background="@drawable/bg">
 
-    <!-- TODO: Update blank fragment layout -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mine_head"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:src="@mipmap/head"
+        app:civ_border_color="@color/colorMainBG"
+        app:civ_border_width="2dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_toEndOf="@id/mine_head">
+
+        <TextView
+            android:id="@+id/mine_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/mine_username"
+            android:textColor="@color/text_color"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mine_username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/mine_phone_corner">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mine_phone"
+                android:textColor="@color/text_color"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="25dp"
-        android:text="我的" />
+        android:id="@+id/mine_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mine_head"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/mine_description"
+        android:textColor="@color/text_color"
+        android:textSize="13sp" />
 
-</FrameLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp">
+
+        <com.example.demo.IconFont.FontIconView
+            android:id="@+id/mine_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mine_img_sign"
+            android:textColor="@color/text_color"
+            android:textSize="20sp" />
+
+        <com.example.demo.IconFont.FontIconView
+            android:id="@+id/mine_minsetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_toEndOf="@id/mine_sign"
+            android:text="@string/mine_img_minsetting"
+            android:textColor="@color/text_color"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/login_corner_view"
+        android:layout_width="fill_parent"
+        android:layout_height="480dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/login_corner"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <include
+                android:id="@+id/mine_cardview"
+                layout="@layout/mine_card_layout" />
+
+            <include
+                android:id="@+id/mine_card2view"
+                layout="@layout/mine_card2_layout" />
+        </LinearLayout>
+
+        <include
+            android:id="@id/mine_all_setting"
+            layout="@layout/mine_setting_layout" />
+    </LinearLayout>
+</RelativeLayout>

@@ -34,4 +34,12 @@
     <color name="qianhui">#E0E0E0</color>
     <color name="black">#000000</color>
     <color name="white_c">#FFFFFF</color>
+    <color name="colorMainBG">#1B5236</color>
+    <color name="colorPhone">#7A90D1ED</color>
+    <color name="colorPhonebord">#CFDFE6</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorRedNum">#FF0000</color>
+    <color name="colorWordsGray">#8b8b8b</color>
+    <color name="colorLine">#DDDDDD</color>
+    <color name="colorSign">#FFD700</color>
 </resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true">
+
+        <com.example.demo.IconFont.FontIconView
+            android:id="@+id/img_sign_wg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/sign_view"
+            android:layout_centerHorizontal="true"
+            android:text="@string/sign_img_1"
+            android:textColor="@color/colorSign"
+            android:textSize="64dp" />
+
+        <RelativeLayout
+            android:id="@+id/sign_view"
+            android:layout_width="220dp"
+            android:layout_height="180dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/sign_corner">
+
+            <RelativeLayout
+                android:id="@+id/sign_head"
+                android:layout_width="220dp"
+                android:layout_height="40dp"
+                android:background="@drawable/sign_1_corner">
+
+                <com.example.demo.IconFont.FontIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:text="@string/sign_img_2"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/sign"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+                <com.example.demo.IconFont.FontIconView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:rotation="180"
+                    android:text="@string/sign_img_2"
+                    android:textColor="@color/text_color"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sign_head"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="@string/sign_tv1"
+                android:textColor="@color/colorWordsGray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/sign_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/sign_tv2"
+                android:textColor="@color/colorRedNum"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/sign_tv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sign_day"
+                android:layout_centerHorizontal="true"
+                android:text="@string/sign_tv4"
+                android:textColor="@color/colorWordsGray"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/sign_btn"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_below="@+id/sign_tv4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/sign_btn_corner"
+                android:text="@string/sign_tv3"
+                android:textColor="@color/colorWhite" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

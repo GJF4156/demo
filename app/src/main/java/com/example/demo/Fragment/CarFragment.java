@@ -1,16 +1,12 @@
 package com.example.demo.Fragment;
 
-
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,9 +17,7 @@ import com.example.demo.adapter.ShoppingCartAdapter;
 import com.example.demo.beans.ShoppingCartBean;
 
 import org.xutils.DbManager;
-import org.xutils.db.sqlite.WhereBuilder;
 import org.xutils.ex.DbException;
-import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.Serializable;
@@ -44,7 +38,6 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
     //结算
     private TextView tvSettlement;
     ListView list_shopping_cart;
-
     private ShoppingCartAdapter shoppingCartAdapter;
     private boolean flag = false;
     private List<ShoppingCartBean> shoppingCartBeanList = new ArrayList<>();
@@ -56,7 +49,6 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_car, container, false);
-
         initDb();
         initView(view);
         initData();
@@ -69,7 +61,6 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
         } catch (DbException e) {
             e.printStackTrace();
         }
-
         shoppingCartAdapter = new ShoppingCartAdapter(getActivity());
         shoppingCartAdapter.setCheckInterface(this);
         shoppingCartAdapter.setModifyCountInterface(this);
@@ -80,7 +71,6 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
     }
 
     private void initView(View view) {
-
         tvTitle = getActivity().findViewById(R.id.tv_title);
         btHeaderRight = getActivity().findViewById(R.id.bt_header_right);
         ckAll = view.findViewById(R.id.ck_all);
@@ -171,7 +161,7 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
                 int id = bean.getId();
             }
         }
-        if (list.size()>0) {
+        if (list.size() > 0) {
             PayFragment payFragment = new PayFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("shoppingCartBeanList", (Serializable) list);
@@ -184,7 +174,7 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
                     .addToBackStack(null)
                     .commitAllowingStateLoss();
         } else {
-            Toast.makeText(getActivity(),"你还没有选择商品哟！",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "你还没有选择商品哟！", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -231,7 +221,6 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
      * @return
      */
     private boolean isAllCheck() {
-
         for (ShoppingCartBean group : shoppingCartBeanList) {
             if (!group.isChoosed())
                 return false;
@@ -293,7 +282,6 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
         }
         shoppingCartBeanList.remove(position);
         shoppingCartAdapter.notifyDataSetChanged();
-
         statistics();
     }
 }
