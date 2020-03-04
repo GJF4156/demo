@@ -20,11 +20,11 @@ import com.example.demo.Fragment.Presenter.impl.FragmentHomePImpl;
 import com.example.demo.Fragment.View.IFragmentHomeV;
 import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
-import com.example.demo.activity.RecoveryActivity;
 import com.example.demo.Utils.DividerItemDecoration;
 import com.example.demo.Utils.ImageUtils;
 import com.example.demo.activity.SpeachActivity;
 import com.example.demo.activity.WebActivity;
+import com.example.demo.activity.WebContentActivity;
 import com.example.demo.adapter.NewsAdapter;
 import com.example.demo.base.BaseFragment;
 import com.example.demo.beans.NewsBeans;
@@ -87,7 +87,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 startActivity(new Intent(getActivity(), SpeachActivity.class));
                 break;
             case  R.id.center_recovery_icon:
-                intent=new Intent(getActivity(), RecoveryActivity.class);
+                intent=new Intent(getActivity(), WebContentActivity.class);
                 startActivity(intent);
                 break;
             default:break;

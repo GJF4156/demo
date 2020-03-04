@@ -1,5 +1,7 @@
 package com.example.demo.base;
 
+import android.view.KeyEvent;
+
 import androidx.fragment.app.Fragment;
 
 
@@ -34,5 +36,9 @@ public class BaseFragment extends Fragment implements Callback.CommonCallback<St
     //  请求完成后，会回调的接口
     @Override
     public void onFinished() {
+    }
+
+    public void onKeyDownChild(int keyCode, KeyEvent event) {
+
     }
 }

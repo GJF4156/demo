@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#0008B6</color>
     <color name="colorPrimary2">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#2CA874</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorIconAndTextNormal">#5F5F5F</color>
     <color name="colorIconAndTextSelect">#0008B6</color>
@@ -28,8 +28,8 @@
     <!--  其他垃圾  -->
     <color name="otherFontColor">#2B2B29</color>
     <!--  未收录  -->
-    <color name="notincludedFontColor">#DD870A</color>
-    <color name="purple_button">#835091</color>
+    <color name="notincludedFontColor">#2CA874</color>
+    <color name="purple_button">#2CA874</color>
     <color name="gray">#808080</color>
     <color name="qianhui">#E0E0E0</color>
     <color name="black">#000000</color>

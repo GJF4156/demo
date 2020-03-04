@@ -25,7 +25,7 @@ import static android.view.View.GONE;
 public class ContentActivity extends AppCompatActivity {
     private ProductInfoFragment productInfoFragment;
     private MoreFragment moreFragment;
-    private TextView btBack,bt_header_right;
+    private TextView btBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

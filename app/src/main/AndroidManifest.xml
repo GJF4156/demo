@@ -32,6 +32,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="q">
+        <activity android:name=".activity.WebContentActivity"></activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="myhead1"
@@ -42,7 +44,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".activity.ContentActivity"></activity>
+        <activity android:name=".activity.ContentActivity" />
         <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.SpeachSearchActivity" />
         <activity android:name=".activity.SearchActivity" />
