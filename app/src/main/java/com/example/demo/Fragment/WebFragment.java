@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 import com.example.demo.R;
 import com.example.demo.base.BaseFragment;
@@ -24,6 +25,7 @@ import static android.view.KeyEvent.KEYCODE_BACK;
  */
 public class WebFragment extends BaseFragment {
     private WebView webView;
+    private TextView tvTitle, btHeaderRight;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,6 +33,7 @@ public class WebFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_web, container, false);
         initView(view);
+        initData();
         Bundle bundle = this.getArguments();//得到从Activity传来的数据
         String url = bundle.getString("url");
         showWebView(url);
@@ -53,8 +56,22 @@ public class WebFragment extends BaseFragment {
         });
     }
 
-    private void initView(View view) {
-        webView=view.findViewById(R.id.webView);
+    private void initData() {
+        tvTitle.setText("环保新闻");
+        btHeaderRight.setVisibility(View.GONE);
     }
 
+    private void initView(View view) {
+        webView = view.findViewById(R.id.webView);
+        tvTitle = getActivity().findViewById(R.id.tv_title);
+        btHeaderRight = getActivity().findViewById(R.id.bt_header_right);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack();
+            System.out.println("hahahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        }
+    }
 }

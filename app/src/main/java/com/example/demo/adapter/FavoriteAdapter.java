@@ -12,18 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.demo.R;
 import com.example.demo.beans.NewsBeans;
+import com.example.demo.beans.NewsData;
 
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<NewsBeans.NewslistBean> mDataBeanList;//保存数据源的列表
-    private NewsAdapter.OnItemClickListener mListener;//初始化监听接口
+    private List<NewsData> mDataBeanList=new ArrayList<>();//保存数据源的列表
+    private FavoriteAdapter.OnItemClickListener mListener;//初始化监听接口
 
-    public NewsAdapter(Context context, List<NewsBeans.NewslistBean> dataBeanList, OnItemClickListener listener) {
+    public FavoriteAdapter(Context context, List<NewsData> dataBeanList, OnItemClickListener listener) {
         this.mContext = context;
         this.mDataBeanList = dataBeanList;
         this.mListener = listener;
@@ -31,12 +33,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public NewsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NewsAdapter.ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.news_layout_item, parent, false));
+    public FavoriteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new FavoriteAdapter.ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.news_layout_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull FavoriteAdapter.ViewHolder holder, final int position) {
         holder.NewsTitle.setText(mDataBeanList.get(position).getTitle());
         holder.NewsDescription.setText(mDataBeanList.get(position).getDescription());
         holder.NewsCtime.setText(mDataBeanList.get(position).getCtime());

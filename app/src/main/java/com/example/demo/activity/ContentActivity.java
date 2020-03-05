@@ -2,10 +2,12 @@ package com.example.demo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.example.demo.Fragment.NoticeFragment;
 import com.example.demo.Fragment.PersonalInfoFragment;
 import com.example.demo.Fragment.ProductInfoFragment;
 import com.example.demo.Fragment.SettingFragment;
+import com.example.demo.Fragment.WebFragment;
 import com.example.demo.MainActivity;
 import com.example.demo.R;
 
@@ -38,6 +41,7 @@ public class ContentActivity extends AppCompatActivity {
     private NoticeFragment noticeFragment;
     private SettingFragment settingFragment;
     private AboutFragment aboutFragment;
+    private WebFragment webFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +110,17 @@ public class ContentActivity extends AppCompatActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_frameLayout,aboutFragment)
+                        .commitAllowingStateLoss();
+                break;
+            case 8:
+                String url = intent.getStringExtra("Url");
+                webFragment = new WebFragment();
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("url", url);
+                webFragment.setArguments(bundle1);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout, webFragment)
                         .commitAllowingStateLoss();
                 break;
             default:

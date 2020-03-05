@@ -38,7 +38,8 @@ public class BaseFragment extends Fragment implements Callback.CommonCallback<St
     public void onFinished() {
     }
 
-    public void onKeyDownChild(int keyCode, KeyEvent event) {
-
+    public void onBackPressed()
+    {
+        // add code in super class when override
     }
 }

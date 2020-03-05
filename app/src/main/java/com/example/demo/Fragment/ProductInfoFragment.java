@@ -44,7 +44,6 @@ public class ProductInfoFragment extends Fragment implements IFragmentProductInf
     private DbManager db;
     private ShoppingCartBean shoppingCartBean = new ShoppingCartBean();
     List<ProductInfo.ProductInfoBean.ImagesPathBean> images1 = new ArrayList<>();   //定义图片集合
-    List<ShoppingCartBean> shoppingCartBeanList = new ArrayList<>();
     List<String> images = new ArrayList<>();
 
     @Override

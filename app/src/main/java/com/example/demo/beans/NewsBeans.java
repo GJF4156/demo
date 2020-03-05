@@ -1,5 +1,8 @@
 package com.example.demo.beans;
 
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
 import java.util.List;
 
 public class NewsBeans {
@@ -37,7 +40,6 @@ public class NewsBeans {
     public void setNewslist(List<NewslistBean> newslist) {
         this.newslist = newslist;
     }
-
     public static class NewslistBean {
         /**
          * ctime : 2020-02-05 13:00
@@ -46,12 +48,14 @@ public class NewsBeans {
          * picUrl : /NMediaFile/2020/0205/MAIN202002050840000195907127441.jpg
          * url : http://env.people.com.cn/n1/2020/0205/c1010-31572401.html
          */
-
         private String ctime;
         private String title;
         private String description;
         private String picUrl;
         private String url;
+
+        public NewslistBean() {
+        }
 
         public String getCtime() {
             return ctime;

@@ -19,8 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -38,10 +40,16 @@ import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
 import com.example.demo.Utils.ScreenUtils;
 import com.example.demo.activity.ContentActivity;
+import com.example.demo.beans.NewsData;
+
+import org.xutils.DbManager;
+import org.xutils.ex.DbException;
+import org.xutils.x;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -57,7 +65,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout rlayout_setting;
     RelativeLayout rlayout_about;
     CircleImageView mineHead;
-    BottomBarLayoutActivity bottomBarLayoutActivity= (BottomBarLayoutActivity) getActivity();
+    private TextView string_num1;
+    private DbManager db;
 
     private Uri imageUri;
     public static final int TAKE_PHOTO = 1;
@@ -68,8 +77,24 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_me, container, false);
+        initDb();
         bindview(view);
         return view;
+    }
+
+    //本地数据的初始化
+    private void initDb() {
+        DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
+                .setDbName("favorite") //设置数据库名
+                .setDbVersion(1) //设置数据库版本
+                .setDbOpenListener(db -> {
+                    db.getDatabase().enableWriteAheadLogging();
+                    //开启WAL, 对写入加速提升巨大(作者原话)
+                })
+                .setDbUpgradeListener((db, oldVersion, newVersion) -> {
+                    //数据库升级操作
+                });
+        db = x.getDb(daoConfig);
     }
 
     private void bindview(View view) {
@@ -81,6 +106,9 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         rlayout_info=view.findViewById(R.id.relativelayout_setting);
         rlayout_setting=view.findViewById(R.id.relativelayout_about);
         mineHead=view.findViewById(R.id.mine_head);
+        string_num1=view.findViewById(R.id.string_num1);
+
+        initData();
 
         msign.setOnClickListener(this);
         minsetting.setOnClickListener(this);
@@ -90,6 +118,15 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         rlayout_info.setOnClickListener(this);
         rlayout_setting.setOnClickListener(this);
         mineHead.setOnClickListener(this);
+    }
+
+    private void initData() {
+        try {
+            List<NewsData> all = db.findAll(NewsData.class);
+            string_num1.setText(String.valueOf(all.size()));
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -310,4 +347,5 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(getActivity(), "获取图片失败", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

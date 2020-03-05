@@ -22,13 +22,21 @@ import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
 import com.example.demo.Utils.DividerItemDecoration;
 import com.example.demo.Utils.ImageUtils;
+import com.example.demo.activity.ContentActivity;
 import com.example.demo.activity.SpeachActivity;
 import com.example.demo.activity.WebActivity;
 import com.example.demo.activity.WebContentActivity;
 import com.example.demo.adapter.NewsAdapter;
 import com.example.demo.base.BaseFragment;
 import com.example.demo.beans.NewsBeans;
+import com.example.demo.beans.NewsData;
 
+import org.xutils.DbManager;
+import org.xutils.db.Selector;
+import org.xutils.ex.DbException;
+import org.xutils.x;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener, IFragmentHomeV {
@@ -39,28 +47,44 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private RecyclerView NewsRv;
     private ImageView imageView;
 
+    private DbManager db;
+
     private IFragmentHomeP mPresenter;
 
-    public HomeFragment() {
-    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        mPresenter=new FragmentHomePImpl(this);
+        //初始化本地数据库
+        initDb();
+        mPresenter = new FragmentHomePImpl(this);
         mPresenter.getData(getActivity());
         //初始化数据
         init(view);
         return view;
     }
 
+    //本地数据的初始化
+    private void initDb() {
+        DbManager.DaoConfig daoConfig = new DbManager.DaoConfig()
+                .setDbName("favorite") //设置数据库名
+                .setDbVersion(1) //设置数据库版本
+                .setDbOpenListener(db -> {
+                    db.getDatabase().enableWriteAheadLogging();
+                    //开启WAL, 对写入加速提升巨大(作者原话)
+                })
+                .setDbUpgradeListener((db, oldVersion, newVersion) -> {
+                    //数据库升级操作
+                });
+        db = x.getDb(daoConfig);
+    }
+
     private void init(View view) {
         imageView = view.findViewById(R.id.main_image);
-        center_ar_icon=view.findViewById(R.id.center_ar_icon);
-        center_voice_icon=view.findViewById(R.id.center_voice_icon);
-        center_recovery_icon=view.findViewById(R.id.center_recovery_icon);
-        NewsRv=view.findViewById(R.id.news_rv);
+        center_ar_icon = view.findViewById(R.id.center_ar_icon);
+        center_voice_icon = view.findViewById(R.id.center_voice_icon);
+        center_recovery_icon = view.findViewById(R.id.center_recovery_icon);
+        NewsRv = view.findViewById(R.id.news_rv);
         //设置recyclerview的布局管理器
         NewsRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         //设置recyclerview每项的分割线
@@ -79,18 +103,19 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.center_ar_icon:
-                Toast.makeText(getActivity(),"点击了AR识别",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "点击了AR识别", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.center_voice_icon:
                 startActivity(new Intent(getActivity(), SpeachActivity.class));
                 break;
-            case  R.id.center_recovery_icon:
-                intent=new Intent(getActivity(), WebContentActivity.class);
+            case R.id.center_recovery_icon:
+                intent = new Intent(getActivity(), WebContentActivity.class);
                 startActivity(intent);
                 break;
-            default:break;
+            default:
+                break;
         }
     }
 
@@ -99,11 +124,34 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         NewsRv.setAdapter(new NewsAdapter(getActivity(), newslistBeanList, new NewsAdapter.OnItemClickListener() {
             @Override
             public void onClick(int position) {
-                String Url=newslistBeanList.get(position).getUrl();
-                Intent intent=new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("Url",Url);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                String Url = newslistBeanList.get(position).getUrl();
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","8");
+                intent.putExtra("Url", Url);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(int position) {
+                NewsData newsData = new NewsData();
+                newsData.setCtime(newslistBeanList.get(position).getCtime());
+                newsData.setDescription(newslistBeanList.get(position).getDescription());
+                newsData.setPicUrl(newslistBeanList.get(position).getPicUrl());
+                newsData.setTitle(newslistBeanList.get(position).getTitle());
+                newsData.setUrl(newslistBeanList.get(position).getUrl());
+                try {
+                    Selector<NewsData> newsDataSelector = db.selector(NewsData.class).where("title", "=", newsData.getTitle())
+                            .orderBy("ctime");
+                    if (newsDataSelector.count()>0){
+                        Toast.makeText(getActivity(), "已经收藏过了", Toast.LENGTH_SHORT).show();
+                    }else {
+                        db.save(newsData);
+                        Toast.makeText(getActivity(), "收藏成功", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (DbException e) {
+                    e.printStackTrace();
+                }
             }
         }));
     }

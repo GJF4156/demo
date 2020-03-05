@@ -42,4 +42,5 @@
     <color name="colorWordsGray">#8b8b8b</color>
     <color name="colorLine">#D5D5D5</color>
     <color name="colorSign">#FFD700</color>
+    <color name="colorBG">#ededed</color>
 </resources>
