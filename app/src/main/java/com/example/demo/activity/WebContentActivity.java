@@ -27,7 +27,6 @@ public class WebContentActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_web_content);
         initView();
         initData();
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.web_content_frameLayout, recoveryFragment)

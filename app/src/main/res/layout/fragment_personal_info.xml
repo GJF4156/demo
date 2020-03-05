@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical">
+
+    <include layout="@layout/person_setting1_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorLine" />
+
+    <include layout="@layout/person_setting2_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorLine" />
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/personal_set_safe"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:background="#FFF">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/personal_set_birthdate"-->
+<!--            style="@style/Personal_setting_textLeft"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:text="@string/personal_set_safe" />-->
+
+<!--        <com.example.demo.IconFont.FontIconView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:text="@string/mine_img_arrowToRight"-->
+<!--            android:textColor="@color/colorLine" />-->
+<!--    </LinearLayout>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorLine" />
+    <Button
+        android:id="@+id/personal_set_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorMainBG"
+        android:text="@string/personal_set_btn"
+        android:textColor="#FFF" />
+</LinearLayout>

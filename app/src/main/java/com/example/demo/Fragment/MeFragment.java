@@ -37,6 +37,7 @@ import com.example.demo.BottomBarLayoutActivity;
 import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
 import com.example.demo.Utils.ScreenUtils;
+import com.example.demo.activity.ContentActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -61,6 +62,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     private Uri imageUri;
     public static final int TAKE_PHOTO = 1;
     public static final int PICK_PHOTO = 2;
+    private Intent intent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,36 +96,48 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.mine_head:
+                //显示头像
                 AlertDialogPhoto();
                 break;
             case R.id.mine_minsetting:
-                //设置
-                Toast.makeText(getActivity(),"个人资料",Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(MineActivity.this, PersonSetActivity.class));
+                //跳转到个人资料页面
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","2");
+                startActivity(intent);
                 break;
             case R.id.mine_sign:
-                Toast.makeText(getActivity(),"签到",Toast.LENGTH_SHORT).show();
-                showDialog();
+                Toast.makeText(getActivity(),"签到功能正在优化...",Toast.LENGTH_SHORT).show();
+                //showDialog();
                 break;
             case R.id.mine_cardview:
-                Toast.makeText(getActivity(),"我的收藏",Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(MineActivity.this, CollectionActivity.class));
+                //跳转到我的收藏页面
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","3");
+                startActivity(intent);
                 break;
             case R.id.relativelayout_jifen:
-                Toast.makeText(getActivity(),"积分",Toast.LENGTH_SHORT).show();
-                //startActivity(new Intent(MineActivity.this, JiFenActivity.class));
+                //跳转到积分页面
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","4");
+                startActivity(intent);
                 break;
             case R.id.relativelayout_info:
-                Toast.makeText(getActivity(),"通知",Toast.LENGTH_SHORT).show();
-                // startActivity(new Intent(MineActivity.this, InfoActivity.class));
+                //跳转到通知页面
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","5");
+                startActivity(intent);
                 break;
             case R.id.relativelayout_setting:
-                Toast.makeText(getActivity(),"设置",Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(MineActivity.this, SettingActivity.class));
+                //跳转到设置页面
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","6");
+                startActivity(intent);
                 break;
             case R.id.relativelayout_about:
-                Toast.makeText(getActivity(),"关于我们",Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(MineActivity.this, AboutActivity.class));
+                //跳转到关于我们页面
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","7");
+                startActivity(intent);
                 break;
             default:
                 break;

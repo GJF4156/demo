@@ -25,7 +25,6 @@ import static android.view.KeyEvent.KEYCODE_BACK;
 public class WebFragment extends BaseFragment {
     private WebView webView;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -11,8 +11,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.demo.Fragment.AboutFragment;
+import com.example.demo.Fragment.FavoriteFragment;
+import com.example.demo.Fragment.IntegralFragment;
 import com.example.demo.Fragment.MoreFragment;
+import com.example.demo.Fragment.NoticeFragment;
+import com.example.demo.Fragment.PersonalInfoFragment;
 import com.example.demo.Fragment.ProductInfoFragment;
+import com.example.demo.Fragment.SettingFragment;
 import com.example.demo.MainActivity;
 import com.example.demo.R;
 
@@ -25,7 +31,13 @@ import static android.view.View.GONE;
 public class ContentActivity extends AppCompatActivity {
     private ProductInfoFragment productInfoFragment;
     private MoreFragment moreFragment;
+    private PersonalInfoFragment personalInfoFragment;
     private TextView btBack;
+    private FavoriteFragment favoriteFragment;
+    private IntegralFragment integralFragment;
+    private NoticeFragment noticeFragment;
+    private SettingFragment settingFragment;
+    private AboutFragment aboutFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +64,48 @@ public class ContentActivity extends AppCompatActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_frameLayout, productInfoFragment)
+                        .commitAllowingStateLoss();
+                break;
+            case 2:
+                personalInfoFragment=new PersonalInfoFragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,personalInfoFragment)
+                        .commitAllowingStateLoss();
+                break;
+            case 3:
+                favoriteFragment = new FavoriteFragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,favoriteFragment)
+                        .commitAllowingStateLoss();
+                break;
+            case 4:
+                integralFragment = new IntegralFragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,integralFragment)
+                        .commitAllowingStateLoss();
+                break;
+            case 5:
+                noticeFragment = new NoticeFragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,noticeFragment)
+                        .commitAllowingStateLoss();
+                break;
+            case 6:
+                settingFragment = new SettingFragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,settingFragment)
+                        .commitAllowingStateLoss();
+                break;
+            case 7:
+                aboutFragment = new AboutFragment();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,aboutFragment)
                         .commitAllowingStateLoss();
                 break;
             default:

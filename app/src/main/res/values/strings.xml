@@ -86,4 +86,11 @@
     <string name="sign_tv4">连续登陆7天将获得奖励</string>
     <string name="sign_tv3">确认</string>
     <string name="sign_img_1">&#xe681;</string>
+    <string name="personal_set_id">账号</string>
+    <string name="personal_set_name">昵称</string>
+    <string name="personal_set_gender">性别</string>
+    <string name="personal_set_birthdate">生日</string>
+    <string name="personal_set_address">地址</string>
+    <string name="personal_set_safe">账户安全</string>
+    <string name="personal_set_btn">保 存</string>
 </resources>

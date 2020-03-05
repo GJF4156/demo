@@ -121,4 +121,39 @@
         <item name="android:textColor">@color/colorWordsGray</item>
     </style>
 
+    <style name="Personal_setting_textRight">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="Personal_setting_textLeft">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorWordsGray</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+    <style name="Personal_setting_birthdate">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/colorWordsGray</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+    <style name="Personal_set_line">
+        <item name="android:background">@color/colorLine</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+    </style>
+
 </resources>
