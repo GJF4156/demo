@@ -106,7 +106,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         rlayout_info=view.findViewById(R.id.relativelayout_setting);
         rlayout_setting=view.findViewById(R.id.relativelayout_about);
         mineHead=view.findViewById(R.id.mine_head);
-        string_num1=view.findViewById(R.id.string_num1);
+//        string_num1=view.findViewById(R.id.string_num1);
 
         initData();
 
@@ -121,12 +121,16 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initData() {
-        try {
-            List<NewsData> all = db.findAll(NewsData.class);
-            string_num1.setText(String.valueOf(all.size()));
-        } catch (DbException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            List<NewsData> all = db.findAll(NewsData.class);
+//            if (all.isEmpty()){
+//                string_num1.setText("0");
+//            }else {
+//                string_num1.setText(String.valueOf(all.size()));
+//            }
+//        } catch (DbException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

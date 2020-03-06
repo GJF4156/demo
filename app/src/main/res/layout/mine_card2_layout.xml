@@ -12,48 +12,52 @@
     >
     <RelativeLayout
         android:layout_width="150dp"
-        android:layout_height="80dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_vertical">
         <TextView
             android:id="@+id/string_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:text="@string/mine_card2"
+            android:layout_centerVertical="true"
             android:textColor="@color/colorBlack"
+            android:layout_marginLeft="15dp"
             android:textSize="18sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="25dp"
             />
         <ImageView
             android:id="@+id/mine_img_order"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/order"
             android:layout_toRightOf="@id/string_order"
-            android:layout_marginLeft="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginTop="15dp"
             />
-        <TextView
-            android:id="@+id/string_num1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mine_card2_num"
-            android:textColor="@color/colorRedNum"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_below="@id/string_order"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mine_card2_desc"
-            android:textSize="16sp"
-            android:layout_toRightOf="@id/string_num1"
-            android:layout_below="@id/string_order"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="5dp"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/string_num1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/mine_card2_num"-->
+<!--            android:textColor="@color/colorRedNum"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="18sp"-->
+<!--            android:layout_below="@id/string_order"-->
+<!--            android:layout_marginLeft="25dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            />-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/mine_card2_desc"-->
+<!--            android:textSize="16sp"-->
+<!--            android:layout_toRightOf="@id/string_num1"-->
+<!--            android:layout_below="@id/string_order"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            />-->
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
