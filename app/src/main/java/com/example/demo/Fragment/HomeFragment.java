@@ -27,6 +27,7 @@ import com.example.demo.activity.SpeachActivity;
 import com.example.demo.activity.WebActivity;
 import com.example.demo.activity.WebContentActivity;
 import com.example.demo.adapter.NewsAdapter;
+import com.example.demo.adapter.RecyclerSlideAdapter;
 import com.example.demo.base.BaseFragment;
 import com.example.demo.beans.NewsBeans;
 import com.example.demo.beans.NewsData;
@@ -46,7 +47,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private FontIconView center_recovery_icon;
     private RecyclerView NewsRv;
     private ImageView imageView;
-
+    private RecyclerSlideAdapter adapter;
     private DbManager db;
 
     private IFragmentHomeP mPresenter;
@@ -121,19 +122,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getData(List<NewsBeans.NewslistBean> newslistBeanList) {
-        NewsRv.setAdapter(new NewsAdapter(getActivity(), newslistBeanList, new NewsAdapter.OnItemClickListener() {
+        NewsAdapter adapter=new NewsAdapter(getActivity(), newslistBeanList, false);
+        adapter.setOnDelListener(new NewsAdapter.onSlideListener() {
             @Override
-            public void onClick(int position) {
-                String Url = newslistBeanList.get(position).getUrl();
-                intent = new Intent(getActivity(), ContentActivity.class);
-                intent.putExtra("type","8");
-                intent.putExtra("Url", Url);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+            public void onDel(int position) {
             }
 
             @Override
-            public void onLongClick(int position) {
+            public void onTop(int position) {
                 NewsData newsData = new NewsData();
                 newsData.setCtime(newslistBeanList.get(position).getCtime());
                 newsData.setDescription(newslistBeanList.get(position).getDescription());
@@ -153,7 +149,41 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     e.printStackTrace();
                 }
             }
-        }));
+        });
+        NewsRv.setAdapter(adapter);
+//        NewsRv.setAdapter(new NewsAdapter(getActivity(), newslistBeanList,false, new NewsAdapter.OnItemClickListener() {
+//            @Override
+//            public void onClick(int position) {
+//                String Url = newslistBeanList.get(position).getUrl();
+//                intent = new Intent(getActivity(), ContentActivity.class);
+//                intent.putExtra("type","8");
+//                intent.putExtra("Url", Url);
+//                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
+//            }
+//
+//            @Override
+//            public void onLongClick(int position) {
+//                NewsData newsData = new NewsData();
+//                newsData.setCtime(newslistBeanList.get(position).getCtime());
+//                newsData.setDescription(newslistBeanList.get(position).getDescription());
+//                newsData.setPicUrl(newslistBeanList.get(position).getPicUrl());
+//                newsData.setTitle(newslistBeanList.get(position).getTitle());
+//                newsData.setUrl(newslistBeanList.get(position).getUrl());
+//                try {
+//                    Selector<NewsData> newsDataSelector = db.selector(NewsData.class).where("title", "=", newsData.getTitle())
+//                            .orderBy("ctime");
+//                    if (newsDataSelector.count()>0){
+//                        Toast.makeText(getActivity(), "已经收藏过了", Toast.LENGTH_SHORT).show();
+//                    }else {
+//                        db.save(newsData);
+//                        Toast.makeText(getActivity(), "收藏成功", Toast.LENGTH_SHORT).show();
+//                    }
+//                } catch (DbException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }));
     }
 }
 

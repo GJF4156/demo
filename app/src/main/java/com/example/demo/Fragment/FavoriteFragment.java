@@ -1,6 +1,7 @@
 package com.example.demo.Fragment;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.PopupMenu;
@@ -10,16 +11,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.demo.MainActivity;
 import com.example.demo.R;
 import com.example.demo.Utils.DividerItemDecoration;
 import com.example.demo.adapter.FavoriteAdapter;
 import com.example.demo.adapter.NewsAdapter;
+import com.example.demo.adapter.RecyclerSlideAdapter;
 import com.example.demo.beans.NewsBeans;
 import com.example.demo.beans.NewsData;
+import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 
 import org.xutils.DbManager;
 import org.xutils.ex.DbException;
@@ -35,9 +41,9 @@ import java.util.List;
 public class FavoriteFragment extends Fragment {
     private TextView tvTitle, btHeaderRight;
     private RecyclerView favoriteRv;
-    private List<NewsBeans.NewslistBean> newslistBeans = new ArrayList<>();
+    private List<NewsData> newslistBeans = new ArrayList<>();
     private DbManager db;
-    private WebFragment webFragment;
+    private RecyclerSlideAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,50 +71,43 @@ public class FavoriteFragment extends Fragment {
         db = x.getDb(daoConfig);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initData() {
         tvTitle.setText("收藏");
         btHeaderRight.setVisibility(View.GONE);
-        favoriteRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //设置recyclerview每项的分割线
-        favoriteRv.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
-        //从数据库查询数据
         try {
-            List<NewsData> all = db.findAll(NewsData.class);
-            favoriteRv.setAdapter(new FavoriteAdapter(getActivity(), all, new FavoriteAdapter.OnItemClickListener() {
+            newslistBeans = db.findAll(NewsData.class);
+            adapter = new RecyclerSlideAdapter(getActivity(),newslistBeans,true);
+            adapter.setOnDelListener(new RecyclerSlideAdapter.onSlideListener() {
+
+                //删除
                 @Override
-                public void onClick(int position) {
-                    webFragment = new WebFragment();
-                    Bundle bundle = new Bundle();
-                    String url = all.get(position).getUrl();
-                    bundle.putString("url", url);
-                    webFragment.setArguments(bundle);
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.content_frameLayout,webFragment)
-                            .addToBackStack(null)
-                            .commitAllowingStateLoss();
+                public void onDel(int position) {
+                    try {
+                        deleteData(position, newslistBeans);
+                    } catch (DbException e) {
+                        e.printStackTrace();
+                    }
                 }
-
+                //置顶
                 @Override
-                public void onLongClick(int position) {
-                    PopupMenu popupMenu = new PopupMenu(getContext(),getView());
-                    popupMenu.getMenuInflater().inflate(R.menu.menu_item,popupMenu.getMenu());
-                    //弹出式菜单的菜单项点击事件
-                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            try {
-                                deleteData(position, all);
-                            } catch (DbException e) {
-                                e.printStackTrace();
-                            }
-                            return false;
+                public void onTop(int position) {
+                }
+            });
+            favoriteRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+            favoriteRv.setAdapter(adapter);
+            favoriteRv.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+                    if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                        SwipeMenuLayout viewCache = SwipeMenuLayout.getViewCache();
+                        if (null != viewCache) {
+                            viewCache.smoothClose();
                         }
-                    });
-                    popupMenu.show();
+                    }
+                    return false;
                 }
-            }));
+            });
         } catch (DbException e) {
             e.printStackTrace();
         }

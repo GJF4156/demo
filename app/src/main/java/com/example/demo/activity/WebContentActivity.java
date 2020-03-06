@@ -30,7 +30,6 @@ public class WebContentActivity extends AppCompatActivity implements View.OnClic
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.web_content_frameLayout, recoveryFragment)
-                .addToBackStack(null)
                 .commitAllowingStateLoss();
     }
 
