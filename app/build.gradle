@@ -57,4 +57,7 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
     implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.1'
+
+    implementation 'pub.devrel:easypermissions:2.0.1'
+    implementation 'com.github.15335179243:ChuMuYa:v11-1.0.4'
 }

@@ -37,8 +37,6 @@ public class SortFragment extends BaseFragment implements View.OnClickListener, 
 
     private TextView searchtv;
     private ImageView kehuishoulaji, chuyulaji, youhailaji, qitalaji;
-    private List<SortsBean.DatalistBean> resultBeanList;
-    private String url;
     private IFragmentSortP mPresenter;
 
     @Override

@@ -1,29 +1,40 @@
 package com.example.demo;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
+import com.chumu.dt.v24.permissions.DynamicPermissions;
 import com.example.demo.Fragment.HomeFragment;
 import com.example.demo.Fragment.MeFragment;
 import com.example.demo.Fragment.ShopFragment;
 import com.example.demo.Fragment.SortFragment;
 import com.example.demo.base.BaseActivity;
-import com.example.demo.beans.NewsBeans;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.Manifest.permission.ACCESS_NETWORK_STATE;
+import static android.Manifest.permission.ACCESS_WIFI_STATE;
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.CHANGE_NETWORK_STATE;
+import static android.Manifest.permission.INTERNET;
+import static android.Manifest.permission.READ_CONTACTS;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.READ_PHONE_STATE;
+import static android.Manifest.permission.READ_SMS;
+import static android.Manifest.permission.RECORD_AUDIO;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_SETTINGS;
 
 public class BottomBarLayoutActivity extends BaseActivity {
     private List<Fragment> pageLists;
@@ -36,7 +47,20 @@ public class BottomBarLayoutActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_bar_layout);
-        init();
+        String[] str = {READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE,
+                INTERNET, RECORD_AUDIO, ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE, CHANGE_NETWORK_STATE, READ_PHONE_STATE,
+                READ_CONTACTS, READ_EXTERNAL_STORAGE, WRITE_SETTINGS, ACCESS_FINE_LOCATION, CAMERA, READ_SMS
+        };
+        //调用本库方法(Call the library method)
+        DynamicPermissions dynamicPermissions = new DynamicPermissions(BottomBarLayoutActivity.this, str);
+        //判断有没有权限,没有的话让他获取(Determine whether there is access, if not let him get)
+        if (!dynamicPermissions.isFlag()) {
+            dynamicPermissions.init();
+            init();
+        } else {
+            //你想要进行的操作
+            init();
+        }
     }
 
     private void init() {

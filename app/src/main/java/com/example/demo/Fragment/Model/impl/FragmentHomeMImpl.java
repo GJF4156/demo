@@ -23,7 +23,7 @@ public class FragmentHomeMImpl extends BaseModel implements IFragmentHomeM {
     @Override
     public void getData(Context context) {
         mContext = context;
-        String url = "http://api.tianapi.com/huanbao/index?key=a24ff874e046c94eb472e3a7692900e3&num=20";
+        String url = "http://api.tianapi.com/huanbao/index?key=a24ff874e046c94eb472e3a7692900e3&num=10";
         Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
             @Override
             public void run() {

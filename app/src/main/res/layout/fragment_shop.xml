@@ -1,71 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <!--  模拟搜索框  -->
-    <TextView
-        android:id="@+id/searchtv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/searchview_radious"
-        android:drawableLeft="@drawable/search"
-        android:padding="5dp"
-        android:hint="搜索"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-    <!--轮播图-->
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp" />
 
-    <RelativeLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="5dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <!--  模拟搜索框  -->
         <TextView
-            android:id="@+id/recommend"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_alignParentStart="true"
-            android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:text="商品推荐"
-            android:textColor="#333333"
-            android:textSize="22sp"
-            android:textStyle="normal"
-            tools:ignore="HardcodedText,RtlSymmetry" />
+            android:id="@+id/searchtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/searchview_radious"
+            android:drawableLeft="@drawable/search"
+            android:gravity="center"
+            android:hint="搜索"
+            android:padding="5dp"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <!--轮播图-->
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp" />
 
-        <com.example.demo.IconFont.FontIconView
-            android:id="@+id/more"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_alignParentEnd="true"
-            android:gravity="center_vertical"
-            android:paddingEnd="10dp"
-            android:text="@string/more"
-            android:textColor="#333333"
-            android:textSize="22sp"
-            android:textStyle="italic"
-            tools:ignore="RelativeOverlap,RtlSymmetry" />
-    </RelativeLayout>
-    <!--  RecyclerView显示商品  -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/product_Rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="5dp">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:text="商品推荐"
+                android:textColor="#333333"
+                android:textSize="22sp"
+                android:textStyle="normal"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+
+            <com.example.demo.IconFont.FontIconView
+                android:id="@+id/more"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_vertical"
+                android:paddingEnd="10dp"
+                android:text="@string/more"
+                android:textColor="#333333"
+                android:textSize="22sp"
+                android:textStyle="italic"
+                tools:ignore="RelativeOverlap,RtlSymmetry" />
+        </RelativeLayout>
+        <!--  RecyclerView显示商品  -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/product_Rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:padding="10dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
