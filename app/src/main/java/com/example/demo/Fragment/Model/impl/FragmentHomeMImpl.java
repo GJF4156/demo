@@ -27,7 +27,7 @@ public class FragmentHomeMImpl extends BaseModel implements IFragmentHomeM {
         Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
             @Override
             public void run() {
-                loadData(url);
+                loadData(url,0);
             }
         });
     }

@@ -9,13 +9,18 @@ import org.xutils.http.RequestParams;
 import org.xutils.x;
 
 public class BaseModel implements Callback.CommonCallback<String> {
-    private Context context;
-
-
-
-    public void loadData(String url) {
-        RequestParams params = new RequestParams(url);
-        x.http().get(params, this);
+    public void loadData(String path, int requestType) {
+        RequestParams params = new RequestParams(path);
+        switch (requestType) {
+            case 0:
+                x.http().get(params, this);
+                break;
+            case 1:
+                x.http().post(params, this);
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

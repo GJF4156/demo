@@ -42,7 +42,7 @@ public class SearchFragment extends BaseFragment {
         //设置recyclerview的布局管理器
         SpeachSearchRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
         url = url1 + name;
-        loadData(url);
+        loadData(url,0);
         url = url1;
         return view;
     }

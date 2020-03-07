@@ -23,7 +23,7 @@ public class FragmentProductInfoMImpl extends BaseModel implements IFragmentProd
             @Override
             public void run() {
                 String url="http://129.211.75.130:8080/demo/products/findById?pid=";
-                loadData(url+pid);
+                loadData(url+pid,0);
             }
         });
 

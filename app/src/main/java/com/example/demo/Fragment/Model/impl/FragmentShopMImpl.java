@@ -22,7 +22,7 @@ public class FragmentShopMImpl extends BaseModel implements IFragmentShopM {
             @Override
             public void run() {
                 String url="http://129.211.75.130:8080/demo/products/findAll";
-                loadData(url);
+                loadData(url,0);
             }
         });
     }

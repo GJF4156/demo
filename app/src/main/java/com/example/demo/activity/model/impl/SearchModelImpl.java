@@ -21,7 +21,7 @@ public class SearchModelImpl extends BaseModel implements SearchModel {
     @Override
     public void getData(String query) {
         String url = url1 + query;
-        loadData(url);
+        loadData(url,0);
         url = url1;
     }
 

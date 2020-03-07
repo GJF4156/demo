@@ -154,11 +154,11 @@ public class CarFragment extends Fragment implements View.OnClickListener, Shopp
             boolean choosed = bean.isChoosed();
             if (choosed) {
                 list.add(bean);
-                String shoppingName = bean.getShoppingName();
-                int count = bean.getCount();
-                double price = bean.getPrice();
-                int size = bean.getDressSize();
-                int id = bean.getId();
+//                String shoppingName = bean.getShoppingName();
+//                int count = bean.getCount();
+//                double price = bean.getPrice();
+//                int size = bean.getDressSize();
+//                int id = bean.getId();
             }
         }
         if (list.size() > 0) {

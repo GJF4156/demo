@@ -19,7 +19,7 @@ public class FragmentMoreMImpl extends BaseModel implements IFragmentMoreM {
         Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
             @Override
             public void run() {
-                loadData(url);
+                loadData(url,0);
             }
         });
     }

@@ -21,7 +21,7 @@ public class FragmentSortMImpl extends BaseModel implements IFragmentSortM {
             @Override
             public void run() {
                 String url=url1+type;
-                loadData(url);
+                loadData(url,0);
                 url=url1;
                 System.out.println(url);
             }
