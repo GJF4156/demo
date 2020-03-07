@@ -94,7 +94,7 @@ public class BottomBarLayoutActivity extends BaseActivity {
         viewPager.setAdapter(new fragmentAdapter(getSupportFragmentManager()));
         bottomBarLayout.setViewPager(viewPager);
         //bottomBarLayout.setUnread(1, 101);//设置第二个页签的未读书
-        bottomBarLayout.showNotify(2);//设置第三个页签显示提示的小红点
+        //bottomBarLayout.showNotify(2);//设置第三个页签显示提示的小红点
         //bottomBarLayout.setMsg(3, "NEW");//设置第四个页签显示NEW提示文字
         //设置选中项的监听事件
 //        bottomBarLayout.setOnItemSelectedListener(new BottomBarLayout.OnItemSelectedListener() {

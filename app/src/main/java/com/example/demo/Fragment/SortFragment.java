@@ -25,9 +25,12 @@ import com.example.demo.R;
 import com.example.demo.Utils.DrawableUtils;
 import com.example.demo.activity.SearchActivity;
 import com.example.demo.adapter.SearchRvAdapter;
+import com.example.demo.adapter.SortMenuAdapter;
 import com.example.demo.base.BaseFragment;
+import com.example.demo.beans.SortCard;
 import com.example.demo.beans.SortsBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,8 +39,9 @@ import java.util.List;
 public class SortFragment extends BaseFragment implements View.OnClickListener, IFragmentSortV {
 
     private TextView searchtv;
-    private ImageView kehuishoulaji, chuyulaji, youhailaji, qitalaji;
     private IFragmentSortP mPresenter;
+    private RecyclerView sort_menu;
+    private List<SortCard> list = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +50,53 @@ public class SortFragment extends BaseFragment implements View.OnClickListener, 
         View view = inflater.inflate(R.layout.fragment_sort, container, false);
         mPresenter = new FragmentSortPImpl(this);
         init(view);
+        initData();
         return view;
+    }
+
+    private void initData() {
+        SortCard sortCard1 = new SortCard();
+        sortCard1.setSortIcon(getActivity().getString(R.string.recyclableFont));
+        sortCard1.setSortName("可回收垃圾");
+        sortCard1.setSortDescrip("指适宜回收可循环利用的废弃物");
+        sortCard1.setContent1("投放时尽量保持清洁干燥，避免污染");
+        sortCard1.setContent2("有内容物的，应清空并清洁后压扁投放");
+        sortCard1.setContent3("易碎尖锐的，应包裹后投放");
+        list.add(sortCard1);
+        SortCard sortCard2 = new SortCard();
+        sortCard2.setSortIcon(getActivity().getString(R.string.hazardousFont));
+        sortCard2.setSortName("有害垃圾");
+        sortCard2.setSortDescrip("指对人体健康或者自然环境造成直接或潜在危害的废弃物");
+        sortCard2.setContent1("分类投放有害垃圾时，应注意轻放");
+        sortCard2.setContent2("压力罐装容器，应排空内容物后投放");
+        sortCard2.setContent3("易碎尖锐的，应包裹后投放");
+        list.add(sortCard2);
+        SortCard sortCard3 = new SortCard();
+        sortCard3.setSortIcon(getActivity().getString(R.string.kitchenFont));
+        sortCard3.setSortName("厨余垃圾");
+        sortCard3.setSortDescrip("指易腐垃圾，易腐生物质生活废弃物");
+        sortCard3.setContent1("沥干水分");
+        sortCard3.setContent2("有外包装的应去除外包装");
+        sortCard3.setContent3("与其他种类垃圾分开投放");
+        list.add(sortCard3);
+        SortCard sortCard4 = new SortCard();
+        sortCard4.setSortIcon(getActivity().getString(R.string.otherFont));
+        sortCard4.setSortName("其他垃圾");
+        sortCard4.setSortDescrip("除其他三类垃圾外的生活废弃物");
+        sortCard4.setContent1("易碎或已污染的，应包裹后投放");
+        sortCard4.setContent2("投放时，应保持周边环境整洁");
+        sortCard4.setContent3("与其他种类垃圾分开投放");
+        list.add(sortCard4);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        sort_menu.setLayoutManager(linearLayoutManager);
+        sort_menu.setAdapter(new SortMenuAdapter(getActivity(), list, new SortMenuAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(int position) {
+                mPresenter.getData(position);
+            }
+        }));
+
     }
 
     /**
@@ -55,39 +105,14 @@ public class SortFragment extends BaseFragment implements View.OnClickListener, 
      * @param view
      */
     private void init(View view) {
-        kehuishoulaji = view.findViewById(R.id.kehuishoulaji);
-        chuyulaji = view.findViewById(R.id.chuyulaji);
-        youhailaji = view.findViewById(R.id.youhailaji);
-        qitalaji = view.findViewById(R.id.qitalaji);
         searchtv = view.findViewById(R.id.searchtv);
-
-        kehuishoulaji.setImageDrawable(DrawableUtils.ZoomDrawable(getResources().getDrawable(R.drawable.kehuishoulaji), 2300, 3800));
-        chuyulaji.setImageDrawable(DrawableUtils.ZoomDrawable(getResources().getDrawable(R.drawable.chuyulaji), 2300, 3800));
-        youhailaji.setImageDrawable(DrawableUtils.ZoomDrawable(getResources().getDrawable(R.drawable.youhailaji), 2300, 3800));
-        qitalaji.setImageDrawable(DrawableUtils.ZoomDrawable(getResources().getDrawable(R.drawable.qitalaji), 2300, 3800));
-
+        sort_menu = view.findViewById(R.id.sort_menu);
         searchtv.setOnClickListener(this);
-        kehuishoulaji.setOnClickListener(this);
-        chuyulaji.setOnClickListener(this);
-        youhailaji.setOnClickListener(this);
-        qitalaji.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.kehuishoulaji:
-                mPresenter.getData(0);
-                break;
-            case R.id.chuyulaji:
-                mPresenter.getData(2);
-                break;
-            case R.id.youhailaji:
-                mPresenter.getData(1);
-                break;
-            case R.id.qitalaji:
-                mPresenter.getData(3);
-                break;
             case R.id.searchtv:
                 startActivity(new Intent(getActivity(), SearchActivity.class));
                 break;
