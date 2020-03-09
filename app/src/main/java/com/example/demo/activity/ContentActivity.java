@@ -1,17 +1,10 @@
 package com.example.demo.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.demo.Fragment.AboutFragment;
 import com.example.demo.Fragment.FavoriteFragment;
@@ -22,14 +15,7 @@ import com.example.demo.Fragment.PersonalInfoFragment;
 import com.example.demo.Fragment.ProductInfoFragment;
 import com.example.demo.Fragment.SettingFragment;
 import com.example.demo.Fragment.WebFragment;
-import com.example.demo.MainActivity;
 import com.example.demo.R;
-
-import org.xutils.DbManager;
-
-import java.util.Objects;
-
-import static android.view.View.GONE;
 
 public class ContentActivity extends AppCompatActivity {
     private ProductInfoFragment productInfoFragment;

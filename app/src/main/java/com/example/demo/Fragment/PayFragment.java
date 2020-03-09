@@ -94,7 +94,6 @@ public class PayFragment extends BaseFragment {
             orderBean.setOdAddress("四川省遂宁市大英县");//从用户信息中获取
             orderBean.setOdPrice(list.get(i).getPrice() * list.get(i).getCount());
             orderBean.setOdStatus("未处理");//默认未处理
-            orderBean.setOdStatus(s);
             orderBean.setOdProductId(list.get(i).getId());
             orderBean.setOdUserId(1);//从用户信息中获取
             orderBean.setOdTele("13777777777");//从用户信息中获取
@@ -110,11 +109,11 @@ public class PayFragment extends BaseFragment {
         map.put("code",200);
         map.put("msg","成功");
         map.put("OrdersList",OrdersList);
-        System.out.println(map);
+        System.out.println(orderBeanList.get(0).toString());
         submitOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            loadData(url+orderBeanList,1);
+            loadData(url+OrdersList,1);
             }
         });
     }

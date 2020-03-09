@@ -4,26 +4,18 @@ package com.example.demo.Fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.demo.MainActivity;
 import com.example.demo.R;
-import com.example.demo.Utils.DividerItemDecoration;
-import com.example.demo.adapter.FavoriteAdapter;
-import com.example.demo.adapter.NewsAdapter;
 import com.example.demo.adapter.RecyclerSlideAdapter;
-import com.example.demo.beans.NewsBeans;
 import com.example.demo.beans.NewsData;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 

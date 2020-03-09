@@ -168,5 +168,24 @@ public class OrdersBean {
         public void setOdCreationTime(String odCreationTime) {
             this.odCreationTime = odCreationTime;
         }
+
+        @Override
+        public String toString() {
+            return "OrderBean{" +
+                    "odId=" + odId +
+                    ", odStatus='" + odStatus + '\'' +
+                    ", odPayTime='" + odPayTime + '\'' +
+                    ", odProductId=" + odProductId +
+                    ", odUserId=" + odUserId +
+                    ", odAddress='" + odAddress + '\'' +
+                    ", odTele='" + odTele + '\'' +
+                    ", odPrice=" + odPrice +
+                    ", odExpressType='" + odExpressType + '\'' +
+                    ", odNumber='" + odNumber + '\'' +
+                    ", odShipTime='" + odShipTime + '\'' +
+                    ", odClosingTime='" + odClosingTime + '\'' +
+                    ", odCreationTime='" + odCreationTime + '\'' +
+                    '}';
+        }
     }
 }

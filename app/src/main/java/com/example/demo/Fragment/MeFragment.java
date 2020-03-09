@@ -19,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,26 +30,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
-import com.example.demo.BottomBarLayoutActivity;
 import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
 import com.example.demo.Utils.ScreenUtils;
 import com.example.demo.activity.ContentActivity;
-import com.example.demo.beans.NewsData;
 
 import org.xutils.DbManager;
-import org.xutils.ex.DbException;
 import org.xutils.x;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 /**

@@ -163,4 +163,10 @@
         <item name="android:popupBackground">#818181</item> <!--更改背景颜色-->
     </style>
 
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorWordsGray</item>
+        <item name="colorControlActivated">@color/colorQRcodeBtn</item>
+    </style>
+
+    <color name="colorQRcodeBtn">#FF9800</color>
 </resources>

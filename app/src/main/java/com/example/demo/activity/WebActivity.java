@@ -10,7 +10,6 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.example.demo.BottomBarLayoutActivity;
 import com.example.demo.R;
 
 import static android.view.KeyEvent.KEYCODE_BACK;

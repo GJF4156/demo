@@ -93,4 +93,6 @@
     <string name="personal_set_address">地址</string>
     <string name="personal_set_safe">账户安全</string>
     <string name="personal_set_btn">保 存</string>
+    <string name="login_img_phone">&#xe615;</string>
+    <string name="login_img_psw">&#xe605;</string>
 </resources>
