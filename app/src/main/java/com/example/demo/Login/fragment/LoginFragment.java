@@ -16,21 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.demo.Login.fragment.presenter.ILoginPresenter;
-import com.example.demo.Login.fragment.presenter.LoginPresenterImpl;
+import com.example.demo.Login.fragment.presenter.impl.LoginPresenterImpl;
 import com.example.demo.Login.fragment.view.ILoginView;
 import com.example.demo.R;
-import com.example.demo.Utils.XutilsHttp;
 import com.example.demo.activity.BottomBarLayoutActivity;
 import com.example.demo.base.BaseFragment;
-import com.example.demo.beans.JsonBean;
-import com.example.demo.model.Model;
-import com.google.gson.Gson;
 
-import org.xutils.common.Callback;
-import org.xutils.x;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

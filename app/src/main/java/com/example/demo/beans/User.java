@@ -1,87 +1,87 @@
 package com.example.demo.beans;
 
 public class User {
-    private int user_id;//用户id
-    private String user_nickName;//用户昵称
-    private String user_name;//用户姓名
-    private String user_brith;//用户生日
-    private String user_idcard;//身份证
-    private String user_photo;//头像
+    private int userid;//用户id
+    private String usernickName;//用户昵称
+    private String username;//用户姓名
+    private String userbrith;//用户生日
+    private String useridcard;//身份证
+    private String userphoto;//头像
     private String usertelephone;//电话号码
-    private String user_location;//地址
-    private String user_sex;//性别
+    private String userlocation;//地址
+    private String usersex;//性别
     private String userpassword;//密码
-    private String user_reDate;//注册时间
-    private String user_last_loginDate;//最后一次登录时间
-    private Integer Wl_id;//钱包id
+    private String userreDate;//注册时间
+    private String userlastloginDate;//最后一次登录时间
+    private Integer Wlid;//钱包id
     private String token;//token
 
     public User() {
     }
 
-    public User(int user_id, String user_nickName, String user_name, String user_brith, String user_idcard, String user_photo, String usertelephone, String user_location, String user_sex, String userpassword, String user_reDate, String user_last_loginDate, Integer wl_id, String token) {
-        this.user_id = user_id;
-        this.user_nickName = user_nickName;
-        this.user_name = user_name;
-        this.user_brith = user_brith;
-        this.user_idcard = user_idcard;
-        this.user_photo = user_photo;
+    public User(int userid, String usernickName, String username, String userbrith, String useridcard, String userphoto, String usertelephone, String userlocation, String usersex, String userpassword, String userreDate, String userlastloginDate, Integer wlid, String token) {
+        this.userid = userid;
+        this.usernickName = usernickName;
+        this.username = username;
+        this.userbrith = userbrith;
+        this.useridcard = useridcard;
+        this.userphoto = userphoto;
         this.usertelephone = usertelephone;
-        this.user_location = user_location;
-        this.user_sex = user_sex;
+        this.userlocation = userlocation;
+        this.usersex = usersex;
         this.userpassword = userpassword;
-        this.user_reDate = user_reDate;
-        this.user_last_loginDate = user_last_loginDate;
-        this.Wl_id = wl_id;
+        this.userreDate = userreDate;
+        this.userlastloginDate = userlastloginDate;
+        Wlid = wlid;
         this.token = token;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
-    public String getUser_nickName() {
-        return user_nickName;
+    public String getUsernickName() {
+        return usernickName;
     }
 
-    public void setUser_nickName(String user_nickName) {
-        this.user_nickName = user_nickName;
+    public void setUsernickName(String usernickName) {
+        this.usernickName = usernickName;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUser_brith() {
-        return user_brith;
+    public String getUserbrith() {
+        return userbrith;
     }
 
-    public void setUser_brith(String user_brith) {
-        this.user_brith = user_brith;
+    public void setUserbrith(String userbrith) {
+        this.userbrith = userbrith;
     }
 
-    public String getUser_idcard() {
-        return user_idcard;
+    public String getUseridcard() {
+        return useridcard;
     }
 
-    public void setUser_idcard(String user_idcard) {
-        this.user_idcard = user_idcard;
+    public void setUseridcard(String useridcard) {
+        this.useridcard = useridcard;
     }
 
-    public String getUser_photo() {
-        return user_photo;
+    public String getUserphoto() {
+        return userphoto;
     }
 
-    public void setUser_photo(String user_photo) {
-        this.user_photo = user_photo;
+    public void setUserphoto(String userphoto) {
+        this.userphoto = userphoto;
     }
 
     public String getUsertelephone() {
@@ -92,20 +92,20 @@ public class User {
         this.usertelephone = usertelephone;
     }
 
-    public String getUser_location() {
-        return user_location;
+    public String getUserlocation() {
+        return userlocation;
     }
 
-    public void setUser_location(String user_location) {
-        this.user_location = user_location;
+    public void setUserlocation(String userlocation) {
+        this.userlocation = userlocation;
     }
 
-    public String getUser_sex() {
-        return user_sex;
+    public String getUsersex() {
+        return usersex;
     }
 
-    public void setUser_sex(String user_sex) {
-        this.user_sex = user_sex;
+    public void setUsersex(String usersex) {
+        this.usersex = usersex;
     }
 
     public String getUserpassword() {
@@ -116,28 +116,28 @@ public class User {
         this.userpassword = userpassword;
     }
 
-    public String getUser_reDate() {
-        return user_reDate;
+    public String getUserreDate() {
+        return userreDate;
     }
 
-    public void setUser_reDate(String user_reDate) {
-        this.user_reDate = user_reDate;
+    public void setUserreDate(String userreDate) {
+        this.userreDate = userreDate;
     }
 
-    public String getUser_last_loginDate() {
-        return user_last_loginDate;
+    public String getUserlastloginDate() {
+        return userlastloginDate;
     }
 
-    public void setUser_last_loginDate(String user_last_loginDate) {
-        this.user_last_loginDate = user_last_loginDate;
+    public void setUserlastloginDate(String userlastloginDate) {
+        this.userlastloginDate = userlastloginDate;
     }
 
-    public Integer getWl_id() {
-        return Wl_id;
+    public Integer getWlid() {
+        return Wlid;
     }
 
-    public void setWl_id(Integer wl_id) {
-        Wl_id = wl_id;
+    public void setWlid(Integer wlid) {
+        Wlid = wlid;
     }
 
     public String getToken() {
@@ -151,19 +151,19 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
-                ", user_nickName='" + user_nickName + '\'' +
-                ", user_name='" + user_name + '\'' +
-                ", user_brith='" + user_brith + '\'' +
-                ", user_idcard='" + user_idcard + '\'' +
-                ", user_photo='" + user_photo + '\'' +
+                "userid=" + userid +
+                ", usernickName='" + usernickName + '\'' +
+                ", username='" + username + '\'' +
+                ", userbrith='" + userbrith + '\'' +
+                ", useridcard='" + useridcard + '\'' +
+                ", userphoto='" + userphoto + '\'' +
                 ", usertelephone='" + usertelephone + '\'' +
-                ", user_location='" + user_location + '\'' +
-                ", user_sex='" + user_sex + '\'' +
+                ", userlocation='" + userlocation + '\'' +
+                ", usersex='" + usersex + '\'' +
                 ", userpassword='" + userpassword + '\'' +
-                ", user_reDate='" + user_reDate + '\'' +
-                ", user_last_loginDate='" + user_last_loginDate + '\'' +
-                ", Wl_id=" + Wl_id +
+                ", userreDate='" + userreDate + '\'' +
+                ", userlastloginDate='" + userlastloginDate + '\'' +
+                ", Wlid=" + Wlid +
                 ", token='" + token + '\'' +
                 '}';
     }

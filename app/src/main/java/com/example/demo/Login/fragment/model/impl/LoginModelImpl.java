@@ -1,10 +1,11 @@
-package com.example.demo.Login.fragment.model;
+package com.example.demo.Login.fragment.model.impl;
 
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.example.demo.Login.fragment.model.ILoginModel;
 import com.example.demo.Login.fragment.presenter.ILoginPresenter;
 import com.example.demo.Utils.SPUtil;
 import com.example.demo.Utils.XutilsHttp;
@@ -18,7 +19,7 @@ import org.xutils.common.Callback;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginModelImpl implements ILoginModel{
+public class LoginModelImpl implements ILoginModel {
     private ILoginPresenter loginPresenter;
     private String mToken = SPUtil.getToken();
 
@@ -83,15 +84,15 @@ public class LoginModelImpl implements ILoginModel{
                         SharedPreferences.Editor editor = UniteApp.getContext()
                                 .getSharedPreferences("data", Context.MODE_PRIVATE).edit();
                         editor.putString("userId",user.getUsertelephone());
-                        editor.putString("brith",user.getUser_brith());
-                        editor.putString("idcard",user.getUser_idcard());
-                        editor.putString("location",user.getUser_location());
-                        editor.putString("name",user.getUser_name());
-                        editor.putString("nickName",user.getUser_nickName());
-                        editor.putString("photo",user.getUser_photo());
-                        editor.putString("sex",user.getUser_sex());
+                        editor.putString("brith",user.getUserbrith());
+                        editor.putString("idcard",user.getUseridcard());
+                        editor.putString("location",user.getUserlocation());
+                        editor.putString("name",user.getUsername());
+                        editor.putString("nickName",user.getUsernickName());
+                        editor.putString("photo",user.getUserphoto());
+                        editor.putString("sex",user.getUsersex());
                         editor.putString("password",user.getUserpassword());
-                        editor.putString("Wlid", String.valueOf(user.getWl_id()));
+                        editor.putString("Wlid", String.valueOf(user.getWlid()));
                         editor.apply();
                         loginPresenter.parseStatus(code,msg);
                         break;

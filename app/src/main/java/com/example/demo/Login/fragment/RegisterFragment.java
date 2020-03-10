@@ -15,7 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.demo.Login.fragment.presenter.IRegisterPresenter;
+import com.example.demo.Login.fragment.presenter.impl.RegisterPresenterImpl;
+import com.example.demo.Login.fragment.view.IRegisterView;
 import com.example.demo.R;
+import com.mob.MobSDK;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,9 +30,13 @@ import cn.smssdk.SMSSDK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RegisterFragment extends Fragment implements View.OnClickListener {
+public class RegisterFragment extends Fragment implements View.OnClickListener, IRegisterView {
     private EditText edit_register_phone,edit_register_psw,edit_register_yzcode;
     private Button send_msg_btn,register_btn;
+
+    private IRegisterPresenter mIRegisterPresenter;
+
+    private LoginFragment loginFragment;
 
     public EventHandler eh;
     private String phoneNum,password,checkcode;
@@ -36,8 +44,10 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_register, container, false);
-
+        mIRegisterPresenter = new RegisterPresenterImpl(this);
         initView(view);
+        MobSDK.init(getActivity());
+        init();
         return view;
     }
 
@@ -98,7 +108,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             toast("注册前请先验证");
         }else {
             SMSSDK.submitVerificationCode("86", phoneNum,checkcode);
-            //register(phoneNum,password);//向服务器发送请求
+            mIRegisterPresenter.getRegisterInfo(phoneNum,password);
             toast("注册成功");
         }
     }
@@ -112,9 +122,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             public void afterEvent(int event, int result, Object data) {
                 if (result == SMSSDK.RESULT_COMPLETE){//回调完成
                     if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE){
-//                        Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
-//                        startActivity(intent);
                         //回到登陆页面
+                        onSuccess();
                     }else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){
                         //获取验证码成功
                     }else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){
@@ -132,5 +141,31 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     //toast
     private void toast(String content){
         Toast.makeText(getActivity(),content,Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    @Override
+    public void onSuccess() {
+        loginFragment=new LoginFragment();
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.login_content,loginFragment)
+                .commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onFailed(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void inPswToast() {
+        Toast.makeText(getActivity(), "密码不一致", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void userIdToast() {
+        Toast.makeText(getActivity(), "请输入您的手机号码", Toast.LENGTH_SHORT).show();
     }
 }

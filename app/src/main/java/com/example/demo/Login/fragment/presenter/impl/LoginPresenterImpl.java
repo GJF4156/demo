@@ -1,11 +1,12 @@
-package com.example.demo.Login.fragment.presenter;
+package com.example.demo.Login.fragment.presenter.impl;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.demo.Login.fragment.model.ILoginModel;
-import com.example.demo.Login.fragment.model.LoginModelImpl;
+import com.example.demo.Login.fragment.model.impl.LoginModelImpl;
+import com.example.demo.Login.fragment.presenter.ILoginPresenter;
 import com.example.demo.Login.fragment.view.ILoginView;
 import com.example.demo.base.UniteApp;
 
