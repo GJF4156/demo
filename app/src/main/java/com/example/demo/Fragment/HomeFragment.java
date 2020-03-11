@@ -1,17 +1,22 @@
 package com.example.demo.Fragment;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -122,7 +127,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     @Override
     public void getData(List<NewsBeans.NewslistBean> newslistBeanList) {
-        NewsAdapter adapter=new NewsAdapter(getActivity(), newslistBeanList, false);
+        NewsAdapter adapter = new NewsAdapter(getActivity(), newslistBeanList, false);
         adapter.setOnDelListener(new NewsAdapter.onSlideListener() {
             @Override
             public void onDel(int position) {
@@ -139,9 +144,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 try {
                     Selector<NewsData> newsDataSelector = db.selector(NewsData.class).where("title", "=", newsData.getTitle())
                             .orderBy("ctime");
-                    if (newsDataSelector.count()>0){
+                    if (newsDataSelector.count() > 0) {
                         Toast.makeText(getActivity(), "已经收藏过了", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         db.save(newsData);
                         Toast.makeText(getActivity(), "收藏成功", Toast.LENGTH_SHORT).show();
                     }
@@ -151,39 +156,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             }
         });
         NewsRv.setAdapter(adapter);
-//        NewsRv.setAdapter(new NewsAdapter(getActivity(), newslistBeanList,false, new NewsAdapter.OnItemClickListener() {
-//            @Override
-//            public void onClick(int position) {
-//                String Url = newslistBeanList.get(position).getUrl();
-//                intent = new Intent(getActivity(), ContentActivity.class);
-//                intent.putExtra("type","8");
-//                intent.putExtra("Url", Url);
-//                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//            }
-//
-//            @Override
-//            public void onLongClick(int position) {
-//                NewsData newsData = new NewsData();
-//                newsData.setCtime(newslistBeanList.get(position).getCtime());
-//                newsData.setDescription(newslistBeanList.get(position).getDescription());
-//                newsData.setPicUrl(newslistBeanList.get(position).getPicUrl());
-//                newsData.setTitle(newslistBeanList.get(position).getTitle());
-//                newsData.setUrl(newslistBeanList.get(position).getUrl());
-//                try {
-//                    Selector<NewsData> newsDataSelector = db.selector(NewsData.class).where("title", "=", newsData.getTitle())
-//                            .orderBy("ctime");
-//                    if (newsDataSelector.count()>0){
-//                        Toast.makeText(getActivity(), "已经收藏过了", Toast.LENGTH_SHORT).show();
-//                    }else {
-//                        db.save(newsData);
-//                        Toast.makeText(getActivity(), "收藏成功", Toast.LENGTH_SHORT).show();
-//                    }
-//                } catch (DbException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }));
     }
 }
 

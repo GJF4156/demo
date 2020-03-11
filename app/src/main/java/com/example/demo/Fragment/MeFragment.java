@@ -35,6 +35,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
+import com.example.demo.Utils.SPUtil;
 import com.example.demo.Utils.ScreenUtils;
 import com.example.demo.activity.ContentActivity;
 
@@ -58,7 +59,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout rlayout_setting;
     RelativeLayout rlayout_about;
     CircleImageView mineHead;
-    private TextView string_num1;
+
+    private TextView mine_username,userId;
     private DbManager db;
 
     private Uri imageUri;
@@ -99,6 +101,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         rlayout_info=view.findViewById(R.id.relativelayout_setting);
         rlayout_setting=view.findViewById(R.id.relativelayout_about);
         mineHead=view.findViewById(R.id.mine_head);
+        mine_username=view.findViewById(R.id.mine_username);
+        userId=view.findViewById(R.id.userId);
 //        string_num1=view.findViewById(R.id.string_num1);
 
         initData();
@@ -114,16 +118,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initData() {
-//        try {
-//            List<NewsData> all = db.findAll(NewsData.class);
-//            if (all.isEmpty()){
-//                string_num1.setText("0");
-//            }else {
-//                string_num1.setText(String.valueOf(all.size()));
-//            }
-//        } catch (DbException e) {
-//            e.printStackTrace();
-//        }
+        mine_username.setText(SPUtil.getNickName());
+        userId.setText(SPUtil.getUserId());
     }
 
     @Override

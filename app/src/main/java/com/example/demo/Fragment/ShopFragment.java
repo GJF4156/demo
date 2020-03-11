@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.demo.Fragment.Presenter.IFragmentShopP;
@@ -38,36 +39,46 @@ public class ShopFragment extends Fragment implements OnBannerListener, IFragmen
     List<String> images = new ArrayList<>();   //定义图片集合
     private RecyclerView productRv;
     private IFragmentShopP mPresenter;
-
     private FontIconView more;
-
-    public ShopFragment() {
-        // Required empty public constructor
-    }
+    private TextView searchtv;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_shop, container, false);
-
         mPresenter=new FragmentShopPImpl(this);
         mPresenter.getData();
+        initView(view);
+        initData();
+        return view;
+    }
 
-
-        productRv = view.findViewById(R.id.product_Rv);
+    private void initData() {
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         productRv.setLayoutManager(layoutManager);
         images.add("http://seopic.699pic.com/photo/40005/1749.jpg_wh1200.jpg");
         images.add("http://seopic.699pic.com/photo/50059/1442.jpg_wh1200.jpg");
         images.add("http://seopic.699pic.com/photo/50054/5187.jpg_wh1200.jpg");  //图片路径
-        banner = view.findViewById(R.id.banner);
         banner.setImageLoader(new GlideImageLoader());   //设置图片加载器
         banner.setImages(images);  //设置banner中显示图片
         banner.setDelayTime(3000);
         banner.setOnBannerListener(this);
         banner.start();  //设置完毕后调用
-        return view;
+    }
+
+    private void initView(View view) {
+        searchtv=view.findViewById(R.id.searchtv);
+        productRv = view.findViewById(R.id.product_Rv);
+        banner = view.findViewById(R.id.banner);
+        searchtv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type","9");
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

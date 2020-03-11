@@ -4,11 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Point;
 import android.view.Display;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.SearchView;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;

@@ -102,7 +102,7 @@ public class BottomBarLayoutActivity extends BaseActivity {
          */
         @Override
         public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            //super.destroyItem(container, position, object);
+            super.destroyItem(container, position, object);
         }
 
         /**
@@ -115,7 +115,7 @@ public class BottomBarLayoutActivity extends BaseActivity {
          */
         @Override
         public void destroyItem(@NonNull View container, int position, @NonNull Object object) {
-            //super.destroyItem(container, position, object);
+            super.destroyItem(container, position, object);
         }
     }
 }

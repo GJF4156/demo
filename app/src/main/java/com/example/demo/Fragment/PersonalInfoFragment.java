@@ -24,6 +24,7 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.example.demo.R;
+import com.example.demo.Utils.SPUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,16 +46,12 @@ public class PersonalInfoFragment extends Fragment implements View.OnClickListen
     private EditText tv_nick;
     private LinearLayout personal_set_name,
             personal_set_sex, personal_set_birth,
-            personal_set_address;//personal_set_safe;
+            personal_set_address;
     private Button personal_set_btn;
 
     private TimePickerView pvTime;
     private OptionsPickerView pvGender, pvCity;
     private ArrayList<String> sexItems = new ArrayList<>();
-    //    private PersonalP personalP;
-//    private User myUser;
-    String user_nick;
-
     //  省份
     ArrayList<String> provinceBeanList = new ArrayList<>();
     //  城市
@@ -80,8 +77,12 @@ public class PersonalInfoFragment extends Fragment implements View.OnClickListen
     private void initData() {
         btHeaderRight.setVisibility(View.GONE);
         tvTitle.setText("个人资料");
-        tv_ID.setText("13772727777");
-        tv_nick.setText("昵称");
+        tv_ID.setText(SPUtil.getUserId());
+        tv_nick.setText(SPUtil.getNickName());
+        tv_sex.setText(SPUtil.getSex());
+        tv_birthdate.setText(SPUtil.getBrith());
+        tv_address.setText(SPUtil.getLocation());
+
         personal_set_name.setOnClickListener(this);
         personal_set_sex.setOnClickListener(this);
         personal_set_birth.setOnClickListener(this);

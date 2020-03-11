@@ -18,12 +18,12 @@ public class SPUtil {
 
     public static String getUserName(){
         SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
-        return sharedPreferences.getString("username","");
+        return sharedPreferences.getString("name","");
     }
 
-    public static String getUserPhone(){
+    public static String getNickName(){
         SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
-        return sharedPreferences.getString("userId","");
+        return sharedPreferences.getString("nickName","");
     }
 
 
@@ -37,11 +37,20 @@ public class SPUtil {
         return sharedPreferences.getString("uImage","");
     }
 
-    public static String getBankCard(){
+    public static String getBrith(){
         SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
-        return sharedPreferences.getString("uBankcardNumbers","");
+        return sharedPreferences.getString("brith","");
     }
 
+    public static String getSex(){
+        SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("sex","");
+    }
+
+    public static String getLocation(){
+        SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("location","");
+    }
 
     public static boolean putImage(String bitmap){
         SharedPreferences.Editor sEditor =  UniteApp.getContext().getSharedPreferences("data",Context.MODE_PRIVATE).edit();

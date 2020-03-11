@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.demo.Fragment.AboutFragment;
 import com.example.demo.Fragment.FavoriteFragment;
 import com.example.demo.Fragment.IntegralFragment;
+import com.example.demo.Fragment.MainSearchFragment;
 import com.example.demo.Fragment.MoreFragment;
 import com.example.demo.Fragment.NoticeFragment;
 import com.example.demo.Fragment.PersonalInfoFragment;
@@ -41,6 +42,8 @@ public class ContentActivity extends AppCompatActivity {
         switch (a) {
             case 0:
                 moreFragment = new MoreFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("type","0");
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_frameLayout, moreFragment)
@@ -48,9 +51,9 @@ public class ContentActivity extends AppCompatActivity {
                 break;
             case 1:
                 productInfoFragment = new ProductInfoFragment();
-                Bundle bundle = new Bundle();
-                bundle.putString("pid", intent.getStringExtra("pid"));
-                productInfoFragment.setArguments(bundle);//数据传递到fragment中
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("pid", intent.getStringExtra("pid"));
+                productInfoFragment.setArguments(bundle2);//数据传递到fragment中
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_frameLayout, productInfoFragment)
@@ -107,6 +110,12 @@ public class ContentActivity extends AppCompatActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_frameLayout, webFragment)
+                        .commitAllowingStateLoss();
+                break;
+            case 9:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,new MainSearchFragment())
                         .commitAllowingStateLoss();
                 break;
             default:

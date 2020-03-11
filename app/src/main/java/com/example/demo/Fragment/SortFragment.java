@@ -15,14 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.demo.Fragment.Presenter.IFragmentSortP;
 import com.example.demo.Fragment.Presenter.impl.FragmentSortPImpl;
 import com.example.demo.Fragment.View.IFragmentSortV;
 import com.example.demo.R;
-import com.example.demo.Utils.DrawableUtils;
 import com.example.demo.activity.SearchActivity;
 import com.example.demo.adapter.SearchRvAdapter;
 import com.example.demo.adapter.SortMenuAdapter;

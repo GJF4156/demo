@@ -1,17 +1,29 @@
 package com.example.demo.adapter;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.demo.R;
+import com.example.demo.beans.Product;
+
+import java.util.List;
+
 public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
 
-    /**
-     * 构造函数
-     */
-    public BaseAdapter() {
+    private Context mContext;
+    private List<Product.ProductInfoListBean> mList;
+    private OnItemClickListener mListener;
+
+    public BaseAdapter(Context context, List<Product.ProductInfoListBean> list, OnItemClickListener listener) {
+        this.mContext = context;
+        this.mList = list;
+        this.mListener = listener;
     }
 
     /**
@@ -23,7 +35,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
     @NonNull
     @Override
     public BaseAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.base_item,parent,false));
     }
 
     /**
@@ -33,6 +45,13 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
      */
     @Override
     public void onBindViewHolder(@NonNull BaseAdapter.ViewHolder holder, int position) {
+        holder.description.setText(mList.get(position).getProduct().getDescription());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onClick(position);
+            }
+        });
 
     }
 
@@ -42,10 +61,12 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
      */
     @Override
     public int getItemCount() {
-        return 0;
+        return mList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
+
+        TextView description;
 
         /**
          * 组件初始化
@@ -54,6 +75,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            description=itemView.findViewById(R.id.description);
         }
     }
 

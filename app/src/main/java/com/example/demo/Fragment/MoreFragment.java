@@ -1,7 +1,5 @@
 package com.example.demo.Fragment;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,19 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.demo.Fragment.Presenter.IFragmentMoreP;
-import com.example.demo.Fragment.Presenter.IFragmentShopP;
 import com.example.demo.Fragment.Presenter.impl.FragmentMorePImpl;
-import com.example.demo.Fragment.Presenter.impl.FragmentShopPImpl;
 import com.example.demo.Fragment.View.IFragmentMoreV;
-import com.example.demo.Fragment.View.IFragmentShopV;
 import com.example.demo.R;
 import com.example.demo.Utils.DividerItemDecoration;
-import com.example.demo.activity.ContentActivity;
 import com.example.demo.adapter.MoreProductAdapter;
 import com.example.demo.beans.Product;
 
@@ -46,7 +38,6 @@ public class MoreFragment extends Fragment implements IFragmentMoreV {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_more, container, false);
-
         mPresenter = new FragmentMorePImpl(this);
         mPresenter.getData(url);
 
@@ -62,7 +53,6 @@ public class MoreFragment extends Fragment implements IFragmentMoreV {
         news = view.findViewById(R.id.news);
         tvTitle=getActivity().findViewById(R.id.tv_title);
         btHeaderRight=getActivity().findViewById(R.id.bt_header_right);
-
 
         tvTitle.setText("商城");
         btHeaderRight.setVisibility(view.GONE);
@@ -84,9 +74,6 @@ public class MoreFragment extends Fragment implements IFragmentMoreV {
             news.setBackground(getActivity().getDrawable(R.drawable.border));
             fla=3;
         });
-
-
-
         moreRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         //设置recyclerview每项的分割线
         moreRv.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
