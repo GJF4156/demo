@@ -1,106 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/mine_all_setting"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mine_all_setting"
-    >
+    android:orientation="vertical">
+
     <RelativeLayout
-    android:id="@+id/relativelayout_jifen"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:src="@drawable/jifen"
-        style="@style/Mine_setting_img"
-        android:layout_alignBottom="@id/tv_mine_jifen"
-        />
-    <TextView
-        android:id="@+id/tv_mine_jifen"
-        android:text="@string/mine_jifen"
-        style="@style/Mine_setting_text"
-        />
-    <com.example.demo.IconFont.FontIconView
-        style="@style/Mine_setting_arrow"
-        android:text="@string/mine_img_arrowToRight"
-        android:layout_alignBottom="@id/tv_mine_jifen"
-        />
-    <View
-        style="@style/Mine_setting_line"
-        android:layout_below="@id/tv_mine_jifen"
-        />
+        android:id="@+id/relativelayout_jifen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            style="@style/Mine_setting_img"
+            android:layout_alignBottom="@id/tv_mine_jifen"
+            android:src="@drawable/jifen" />
+
+        <TextView
+            android:id="@+id/tv_mine_jifen"
+            style="@style/Mine_setting_text"
+            android:text="@string/mine_jifen" />
+
+        <com.example.demo.IconFont.FontIconView
+            style="@style/Mine_setting_arrow"
+            android:layout_alignBottom="@id/tv_mine_jifen"
+            android:text="@string/mine_img_arrowToRight" />
+
+        <View
+            style="@style/Mine_setting_line"
+            android:layout_below="@id/tv_mine_jifen" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/relativelayout_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp">
+
         <ImageView
-            android:src="@drawable/info"
             style="@style/Mine_setting_img"
-            android:layout_alignBottom="@id/tv_mine_info" />
+            android:layout_alignBottom="@id/tv_mine_info"
+            android:src="@drawable/info" />
+
         <TextView
             android:id="@+id/tv_mine_info"
-            android:text="@string/mine_info"
             style="@style/Mine_setting_text"
-            />
+            android:text="@string/mine_info" />
+
         <com.example.demo.IconFont.FontIconView
             style="@style/Mine_setting_arrow"
-            android:text="@string/mine_img_arrowToRight"
             android:layout_alignBottom="@id/tv_mine_info"
-            />
+            android:text="@string/mine_img_arrowToRight" />
+
         <View
             style="@style/Mine_setting_line"
-            android:layout_below="@id/tv_mine_info"
-            />
+            android:layout_below="@id/tv_mine_info" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/relativelayout_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp">
+
         <ImageView
-            android:src="@drawable/setting"
             style="@style/Mine_setting_img"
-            android:layout_alignBottom="@id/tv_mine_setting" />
+            android:layout_alignBottom="@id/tv_mine_setting"
+            android:src="@drawable/setting" />
+
         <TextView
             android:id="@+id/tv_mine_setting"
-            android:text="@string/mine_setting"
             style="@style/Mine_setting_text"
-            />
+            android:text="@string/mine_setting" />
+
         <com.example.demo.IconFont.FontIconView
             style="@style/Mine_setting_arrow"
-            android:text="@string/mine_img_arrowToRight"
             android:layout_alignBottom="@id/tv_mine_setting"
-            />
+            android:text="@string/mine_img_arrowToRight" />
+
         <View
             style="@style/Mine_setting_line"
-            android:layout_below="@id/tv_mine_setting"
-            />
+            android:layout_below="@id/tv_mine_setting" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/relativelayout_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp">
+
         <ImageView
-            android:src="@drawable/about"
             style="@style/Mine_setting_img"
-            android:layout_alignBottom="@id/tv_mine_about" />
+            android:layout_alignBottom="@id/tv_mine_about"
+            android:src="@drawable/about" />
+
         <TextView
             android:id="@+id/tv_mine_about"
-            android:text="@string/mine_about"
             style="@style/Mine_setting_text"
-            />
+            android:text="@string/mine_about" />
+
         <com.example.demo.IconFont.FontIconView
             style="@style/Mine_setting_arrow"
-            android:text="@string/mine_img_arrowToRight"
             android:layout_alignBottom="@id/tv_mine_about"
-            />
+            android:text="@string/mine_img_arrowToRight" />
+
         <View
             style="@style/Mine_setting_line"
-            android:layout_below="@id/tv_mine_about"
-            />
+            android:layout_below="@id/tv_mine_about" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/address_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="地址管理" />
 
 
 </LinearLayout>

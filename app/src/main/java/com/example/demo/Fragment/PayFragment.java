@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.demo.R;
 import com.example.demo.Utils.DividerItemDecoration;
+import com.example.demo.Utils.SPUtil;
 import com.example.demo.adapter.PayAdapter;
 import com.example.demo.base.BaseFragment;
 import com.example.demo.beans.OrdersBean;
@@ -34,7 +35,7 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class PayFragment extends BaseFragment {
-    private TextView tvTitle, btHeaderRight, allPrice;
+    private TextView tvTitle, btHeaderRight, allPrice,address,mAddress;
     private RecyclerView orderRv;
     private Button submitOrder;
     ProductInfoFragment productInfoFragment;
@@ -59,6 +60,7 @@ public class PayFragment extends BaseFragment {
         List<ShoppingCartBean> list = (List<ShoppingCartBean>) getArguments().getSerializable("shoppingCartBeanList");
         tvTitle.setText("支付");
         btHeaderRight.setVisibility(View.GONE);
+        address.setText(SPUtil.getLocation());
         orderRv.setLayoutManager(new LinearLayoutManager(getActivity()));
         //设置recyclerview每项的分割线
         orderRv.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
@@ -121,7 +123,6 @@ public class PayFragment extends BaseFragment {
     @Override
     public void onSuccess(String result) {
         Toast.makeText(getActivity(),"成功",Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
@@ -143,6 +144,15 @@ public class PayFragment extends BaseFragment {
         orderRv = view.findViewById(R.id.order_rv);
         allPrice = view.findViewById(R.id.all_price);
         submitOrder = view.findViewById(R.id.submit_order);
+        address=view.findViewById(R.id.mAddress);
+        mAddress=view.findViewById(R.id.mAddress);
+        mAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
     }
 

@@ -121,5 +121,7 @@
         <include
             android:id="@id/mine_all_setting"
             layout="@layout/mine_setting_layout" />
+
+
     </LinearLayout>
 </LinearLayout>

@@ -47,6 +47,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -60,7 +61,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout rlayout_about;
     CircleImageView mineHead;
 
-    private TextView mine_username,userId;
+    private TextView mine_username, userId, address_setting;
     private DbManager db;
 
     private Uri imageUri;
@@ -93,20 +94,21 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void bindview(View view) {
-        msign=view.findViewById(R.id.mine_sign);
-        minsetting=view.findViewById(R.id.mine_minsetting);
-        cv_collect=view.findViewById(R.id.mine_cardview);
-        rlayout_about=view.findViewById(R.id.relativelayout_jifen);
-        rlayout_follow=view.findViewById(R.id.relativelayout_info);
-        rlayout_info=view.findViewById(R.id.relativelayout_setting);
-        rlayout_setting=view.findViewById(R.id.relativelayout_about);
-        mineHead=view.findViewById(R.id.mine_head);
-        mine_username=view.findViewById(R.id.mine_username);
-        userId=view.findViewById(R.id.userId);
+        msign = view.findViewById(R.id.mine_sign);
+        minsetting = view.findViewById(R.id.mine_minsetting);
+        cv_collect = view.findViewById(R.id.mine_cardview);
+        rlayout_about = view.findViewById(R.id.relativelayout_jifen);
+        rlayout_follow = view.findViewById(R.id.relativelayout_info);
+        rlayout_info = view.findViewById(R.id.relativelayout_setting);
+        rlayout_setting = view.findViewById(R.id.relativelayout_about);
+        mineHead = view.findViewById(R.id.mine_head);
+        mine_username = view.findViewById(R.id.mine_username);
+        userId = view.findViewById(R.id.userId);
+        address_setting = view.findViewById(R.id.address_setting);
 //        string_num1=view.findViewById(R.id.string_num1);
 
         initData();
-
+        address_setting.setOnClickListener(this);
         msign.setOnClickListener(this);
         minsetting.setOnClickListener(this);
         cv_collect.setOnClickListener(this);
@@ -132,43 +134,47 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             case R.id.mine_minsetting:
                 //跳转到个人资料页面
                 intent = new Intent(getActivity(), ContentActivity.class);
-                intent.putExtra("type","2");
+                intent.putExtra("type", "2");
                 startActivity(intent);
                 break;
             case R.id.mine_sign:
-                Toast.makeText(getActivity(),"签到功能正在优化...",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "签到功能正在优化...", Toast.LENGTH_SHORT).show();
                 //showDialog();
                 break;
             case R.id.mine_cardview:
                 //跳转到我的收藏页面
                 intent = new Intent(getActivity(), ContentActivity.class);
-                intent.putExtra("type","3");
+                intent.putExtra("type", "3");
                 startActivity(intent);
                 break;
             case R.id.relativelayout_jifen:
                 //跳转到积分页面
                 intent = new Intent(getActivity(), ContentActivity.class);
-                intent.putExtra("type","4");
+                intent.putExtra("type", "4");
                 startActivity(intent);
                 break;
             case R.id.relativelayout_info:
                 //跳转到通知页面
                 intent = new Intent(getActivity(), ContentActivity.class);
-                intent.putExtra("type","5");
+                intent.putExtra("type", "5");
                 startActivity(intent);
                 break;
             case R.id.relativelayout_setting:
                 //跳转到设置页面
                 intent = new Intent(getActivity(), ContentActivity.class);
-                intent.putExtra("type","6");
+                intent.putExtra("type", "6");
                 startActivity(intent);
                 break;
             case R.id.relativelayout_about:
                 //跳转到关于我们页面
                 intent = new Intent(getActivity(), ContentActivity.class);
-                intent.putExtra("type","7");
+                intent.putExtra("type", "7");
                 startActivity(intent);
                 break;
+            case R.id.address_setting:
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type", "10");
+                startActivity(intent);
             default:
                 break;
         }
@@ -215,8 +221,8 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     //调用系统相册
     private void pickphoto() {
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
-        }else {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        } else {
             openAlbum();
         }
 
