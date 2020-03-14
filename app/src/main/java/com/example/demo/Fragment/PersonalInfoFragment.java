@@ -1,6 +1,8 @@
 package com.example.demo.Fragment;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,10 +27,16 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.example.demo.R;
 import com.example.demo.Utils.SPUtil;
+import com.example.demo.Utils.XutilsHttp;
+import com.example.demo.base.UniteApp;
+import com.example.demo.beans.JsonBean;
+import com.example.demo.beans.User;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xutils.common.Callback;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,7 +44,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,11 +88,26 @@ public class PersonalInfoFragment extends Fragment implements View.OnClickListen
         btHeaderRight.setVisibility(View.GONE);
         tvTitle.setText("个人资料");
         tv_ID.setText(SPUtil.getUserId());
-        tv_nick.setText(SPUtil.getNickName());
-        tv_sex.setText(SPUtil.getSex());
-        tv_birthdate.setText(SPUtil.getBrith());
-        tv_address.setText(SPUtil.getLocation());
-
+        if (!SPUtil.getNickName().isEmpty()) {
+            tv_nick.setText(SPUtil.getNickName());
+        }else{
+            tv_nick.setText("请完善你的信息");
+        }
+        if (!SPUtil.getSex().isEmpty()){
+            tv_sex.setText(SPUtil.getSex());
+        }else{
+            tv_sex.setText("请完善你的信息");
+        }
+        if (!SPUtil.getBrith().isEmpty()){
+            tv_birthdate.setText(SPUtil.getBrith());
+        }else {
+            tv_birthdate.setText("请完善你的信息");
+        }
+        if (!SPUtil.getLocation().isEmpty()){
+            tv_address.setText(SPUtil.getLocation());
+        }else {
+            tv_address.setText("请完善你的信息");
+        }
         personal_set_name.setOnClickListener(this);
         personal_set_sex.setOnClickListener(this);
         personal_set_birth.setOnClickListener(this);
@@ -135,10 +160,47 @@ public class PersonalInfoFragment extends Fragment implements View.OnClickListen
                 String birthdate = tv_birthdate.getText().toString();
                 String address = tv_address.getText().toString();
                 if (!id.isEmpty() & !nickName.isEmpty() & !sex.isEmpty() & !birthdate.isEmpty() & !address.isEmpty()) {
-                    //如果都不为空，将数据报存到本地数据库
                     //将数据处理成json格式
+                    User user=new User();
+                    user.setUsernickName(nickName);
+                    user.setUsersex(sex);
+                    user.setUserbrith(birthdate);
+                    user.setUserlocation(address);
+                    String s = new Gson().toJson(user);
                     //将数据更新到服务器中
-                    Toast.makeText(getActivity(), id + "   " + nickName + "   " + sex + "   " + birthdate + "   " + address, Toast.LENGTH_SHORT).show();
+                    String url="http://129.211.75.130:8080/demo/user/update";
+                    Map<String,Object> map=new HashMap<>();
+                    map.put("user",s);
+                    map.put("token",SPUtil.getToken());
+                    XutilsHttp.getInstance().post(url, map, new XutilsHttp.XCallBack() {
+                        @Override
+                        public void onResponse(String result) {
+                            JsonBean jsonBean=new Gson().fromJson(result,JsonBean.class);
+                            int code = jsonBean.getCode();
+                            String msg = jsonBean.getMsg();
+                            Toast.makeText(getActivity(),msg,Toast.LENGTH_SHORT).show();
+                            if (code==100){
+                                SharedPreferences.Editor editor = UniteApp.getContext()
+                                        .getSharedPreferences("data", Context.MODE_PRIVATE).edit();
+                                editor.putString("brith",user.getUserbrith());
+                                editor.putString("location",user.getUserlocation());
+                                editor.putString("nickName",user.getUsernickName());
+                                editor.putString("sex",user.getUsersex());
+                                editor.apply();
+                            }
+                        }
+
+                        @Override
+                        public void onFail(String result) {
+
+                        }
+
+                        @Override
+                        public void onCancel(Callback.CancelledException cex) {
+
+                        }
+                    });
+                    //Toast.makeText(getActivity(), id + "   " + nickName + "   " + sex + "   " + birthdate + "   " + address, Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

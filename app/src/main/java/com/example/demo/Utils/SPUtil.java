@@ -47,6 +47,26 @@ public class SPUtil {
         return sharedPreferences.getString("sex","");
     }
 
+    public static String getReceiver(){
+        SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("address", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("receiver","");
+    }
+
+    public static String getAid(){
+        SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("address", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("aid","");
+    }
+
+    public static String getPhoneNum(){
+        SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("address", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("phone","");
+    }
+
+    public static String getAddressInfo(){
+        SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("address", Context.MODE_PRIVATE);
+        return sharedPreferences.getString("address","");
+    }
+
     public static String getLocation(){
         SharedPreferences sharedPreferences = UniteApp.getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
         return sharedPreferences.getString("location","");

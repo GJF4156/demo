@@ -92,7 +92,6 @@ public class LoginModelImpl implements ILoginModel {
                         editor.putString("photo",user.getUserphoto());
                         editor.putString("sex",user.getUsersex());
                         editor.putString("password",user.getUserpassword());
-                        editor.putString("Wlid", String.valueOf(user.getWlid()));
                         editor.apply();
                         loginPresenter.parseStatus(code,msg);
                         break;

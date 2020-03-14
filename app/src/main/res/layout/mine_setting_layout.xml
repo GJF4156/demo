@@ -107,13 +107,4 @@
             style="@style/Mine_setting_line"
             android:layout_below="@id/tv_mine_about" />
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/address_setting"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="地址管理" />
-
-
 </LinearLayout>

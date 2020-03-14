@@ -112,7 +112,7 @@ public class XutilsHttp {
         RequestParams params = new RequestParams(url);
         if (null != maps && !maps.isEmpty()) {
             for (Map.Entry<String, Object> entry : maps.entrySet()) {
-                params.addBodyParameter(entry.getKey(), String.valueOf(entry.getValue()));
+                params.addParameter(entry.getKey(), entry.getValue());
             }
         }
         x.http().get(params, new Callback.CommonCallback<String>() {
@@ -214,7 +214,7 @@ public class XutilsHttp {
         RequestParams params = new RequestParams(url);
         if (null != maps && !maps.isEmpty()) {
             for (Map.Entry<String, Object> entry : maps.entrySet()) {
-                params.addBodyParameter(entry.getKey(), String.valueOf(entry.getValue()));
+                params.addParameter(entry.getKey(),entry.getValue());
             }
         }
         x.http().post(params, new Callback.CommonCallback<String>() {

@@ -119,11 +119,6 @@ public class ContentActivity extends AppCompatActivity {
                         .replace(R.id.content_frameLayout,new MainSearchFragment())
                         .commitAllowingStateLoss();
                 break;
-            case 10:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_frameLayout,new AddressFragment())
-                        .commitAllowingStateLoss();
             default:
                 break;
         }

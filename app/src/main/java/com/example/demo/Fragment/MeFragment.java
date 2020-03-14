@@ -61,7 +61,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     RelativeLayout rlayout_about;
     CircleImageView mineHead;
 
-    private TextView mine_username, userId, address_setting;
+    private TextView mine_username, userId;
     private DbManager db;
 
     private Uri imageUri;
@@ -104,11 +104,9 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         mineHead = view.findViewById(R.id.mine_head);
         mine_username = view.findViewById(R.id.mine_username);
         userId = view.findViewById(R.id.userId);
-        address_setting = view.findViewById(R.id.address_setting);
 //        string_num1=view.findViewById(R.id.string_num1);
 
         initData();
-        address_setting.setOnClickListener(this);
         msign.setOnClickListener(this);
         minsetting.setOnClickListener(this);
         cv_collect.setOnClickListener(this);
@@ -171,10 +169,6 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 intent.putExtra("type", "7");
                 startActivity(intent);
                 break;
-            case R.id.address_setting:
-                intent = new Intent(getActivity(), ContentActivity.class);
-                intent.putExtra("type", "10");
-                startActivity(intent);
             default:
                 break;
         }

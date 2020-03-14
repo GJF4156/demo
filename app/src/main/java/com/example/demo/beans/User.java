@@ -13,13 +13,12 @@ public class User {
     private String userpassword;//密码
     private String userreDate;//注册时间
     private String userlastloginDate;//最后一次登录时间
-    private Integer Wlid;//钱包id
     private String token;//token
 
     public User() {
     }
 
-    public User(int userid, String usernickName, String username, String userbrith, String useridcard, String userphoto, String usertelephone, String userlocation, String usersex, String userpassword, String userreDate, String userlastloginDate, Integer wlid, String token) {
+    public User(int userid, String usernickName, String username, String userbrith, String useridcard, String userphoto, String usertelephone, String userlocation, String usersex, String userpassword, String userreDate, String userlastloginDate,  String token) {
         this.userid = userid;
         this.usernickName = usernickName;
         this.username = username;
@@ -32,7 +31,6 @@ public class User {
         this.userpassword = userpassword;
         this.userreDate = userreDate;
         this.userlastloginDate = userlastloginDate;
-        Wlid = wlid;
         this.token = token;
     }
 
@@ -132,14 +130,6 @@ public class User {
         this.userlastloginDate = userlastloginDate;
     }
 
-    public Integer getWlid() {
-        return Wlid;
-    }
-
-    public void setWlid(Integer wlid) {
-        Wlid = wlid;
-    }
-
     public String getToken() {
         return token;
     }
@@ -163,7 +153,6 @@ public class User {
                 ", userpassword='" + userpassword + '\'' +
                 ", userreDate='" + userreDate + '\'' +
                 ", userlastloginDate='" + userlastloginDate + '\'' +
-                ", Wlid=" + Wlid +
                 ", token='" + token + '\'' +
                 '}';
     }

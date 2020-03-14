@@ -27,17 +27,53 @@
             android:layout_height="match_parent"
             android:background="#9B9A9A"/>
 
-        <TextView
-            android:id="@+id/mAddress"
+        <LinearLayout
+            android:id="@+id/set_address"
             android:layout_width="0dp"
-            android:layout_weight="3"
             android:layout_height="match_parent"
-            android:text="我的地址"
-            android:singleLine="true"
-            android:textSize="16sp"
-            android:paddingEnd="10dp"
-            android:gravity="center"
-            tools:ignore="RtlSymmetry" />
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                tools:ignore="NestedWeights">
+
+                <TextView
+                    android:id="@+id/receiver"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="2dp"
+                    android:text="郭建风"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/phone_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:padding="2dp"
+                    android:text="13684433731"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/address_info"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="四川省-遂宁市-大英县 明星西街35号" />
+
+        </LinearLayout>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
