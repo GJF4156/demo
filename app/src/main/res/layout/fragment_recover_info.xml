@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="36dip"
+        android:layout_marginStart="36dip"
+        android:layout_marginEnd="36dip"
+        android:layout_marginTop="18dip"
+        android:layout_marginBottom="18dip"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_edittext_selector"
+        android:hint="上门时间"
+        android:padding="5dip"
+        android:singleLine="true"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15dip" />
+
+    <EditText
+        android:id="@+id/person"
+        android:layout_width="match_parent"
+        android:layout_height="36dip"
+        android:layout_marginStart="36dip"
+        android:layout_marginEnd="36dip"
+        android:layout_marginTop="18dip"
+        android:layout_gravity="center"
+        android:layout_marginBottom="18dip"
+        android:background="@drawable/bg_edittext_selector"
+        android:hint="联系人"
+        android:padding="5dip"
+        android:singleLine="true"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15dip" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="36dip"
+        android:layout_marginStart="36dip"
+        android:layout_marginEnd="36dip"
+        android:layout_marginTop="18dip"
+        android:layout_marginBottom="18dip"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_edittext_selector"
+        android:hint="联系方式"
+        android:padding="5dip"
+        android:singleLine="true"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15dip" />
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="36dip"
+        android:layout_marginStart="36dip"
+        android:layout_marginEnd="36dip"
+        android:layout_marginTop="18dip"
+        android:layout_marginBottom="18dip"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_edittext_selector"
+        android:hint="上门地址"
+        android:padding="5dip"
+        android:singleLine="true"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15dip" />
+    <EditText
+        android:id="@+id/sort"
+        android:layout_width="match_parent"
+        android:layout_height="36dip"
+        android:layout_marginStart="36dip"
+        android:layout_marginEnd="36dip"
+        android:layout_marginTop="18dip"
+        android:layout_marginBottom="18dip"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_edittext_selector"
+        android:hint="物品类别（可多选）"
+        android:padding="5dip"
+        android:singleLine="true"
+        android:textColorHint="#AAAAAA"
+        android:textSize="15dip" />
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dip"
+        android:layout_marginEnd="36dip"
+        android:layout_marginTop="18dip"
+        android:layout_marginBottom="18dip"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_radious"
+        android:text="一键预约"
+        android:textStyle="bold"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        />
+</LinearLayout>

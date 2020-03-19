@@ -87,16 +87,22 @@ public class RecoveryFragment extends Fragment implements View.OnClickListener {
                 Toast.makeText(getActivity(),"玻璃",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.recovery_button:
-                webFragment=new WebFragment();
-                Bundle bundle = new Bundle();
-                String url = "http://129.211.75.130:8080/com/html/recycle.html";
-                bundle.putString("url", url);
-                webFragment.setArguments(bundle);
+//                webFragment=new WebFragment();
+//                Bundle bundle = new Bundle();
+//                String url = "http://129.211.75.130:8080/com/html/recycle.html";
+//                bundle.putString("url", url);
+//                webFragment.setArguments(bundle);
+//                getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.web_content_frameLayout, webFragment)
+//                        .addToBackStack(null)//加入回退栈，按back键回到上一个fragment
+//                        .commitAllowingStateLoss();
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.web_content_frameLayout, webFragment)
-                        .addToBackStack(null)//加入回退栈，按back键回到上一个fragment
+                        .replace(R.id.web_content_frameLayout,new RecoverInfoFragment())
+                        .addToBackStack(null)
                         .commitAllowingStateLoss();
+
                 break;
         }
 

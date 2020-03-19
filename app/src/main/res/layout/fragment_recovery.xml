@@ -16,14 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            android:src="@mipmap/main" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:gravity="center"
-            android:background="@color/text_color"
-            android:text="可回收物"/>
+            android:src="@mipmap/huishou" />
         <include layout="@layout/recovery_bar"/>
         <Button
             android:id="@+id/recovery_button"
@@ -31,7 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/btn_radious"
-            android:text="马上预约上门回收"
+            android:text="一键预约"
+            android:textStyle="bold"
             android:textColor="@color/text_color"
             android:textSize="18sp"
             />
