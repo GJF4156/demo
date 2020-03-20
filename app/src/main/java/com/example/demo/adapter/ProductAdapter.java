@@ -41,6 +41,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHoid
         holder.price.setText("￥"+String.valueOf(mProducts.get(position).getProduct().getPrice()));
         holder.sell.setText("已售"+String.valueOf(mProducts.get(position).getProduct().getSold()));
         x.image().bind(holder.productImg,mProducts.get(position).getImagesPath().get(0).getImgPath());
+        System.out.println(mProducts.get(position).getImagesPath().get(0).getImgPath());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
