@@ -74,6 +74,8 @@
     <string name="processed">&#xe619;</string>
     <!--  已完成  -->
     <string name="completed">&#xe61a;</string>
+    <!--  右跳转  -->
+    <string name="tiaozhuan">&#xe616;</string>
     <string name="ddhk_header_back">返回</string>
     <string name="mine_username">Reflection</string>
     <string name="mine_phone">173****4565</string>
@@ -84,7 +86,7 @@
     <string name="mine_card2">我的订单</string>
     <string name="mine_card2_num">5</string>
     <string name="mine_card2_desc">个订单</string>
-    <string name="mine_jifen">积分</string>
+    <string name="mine_jifen">钱包</string>
     <string name="mine_info">通知</string>
     <string name="mine_setting">设置</string>
     <string name="mine_about">关于我们</string>
@@ -107,8 +109,8 @@
     <string name="personal_set_btn">保 存</string>
     <string name="login_img_phone">&#xe615;</string>
     <string name="login_img_psw">&#xe605;</string>
-    <string name="jifen_tv1">当前所有积分</string>
-    <string name="jifen_tv2">100</string>
-    <string name="jifen_tv3">积分兑换</string>
-    <string name="jifen_tv4">获取方法</string>
+    <string name="jifen_tv1">我的零钱</string>
+    <string name="jifen_tv2">100元</string>
+    <string name="jifen_tv3">充值</string>
+    <string name="jifen_tv4">提现</string>
 </resources>

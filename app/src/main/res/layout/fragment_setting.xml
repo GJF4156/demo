@@ -6,8 +6,6 @@
     android:background="@color/colorBG"
     >
     <include layout="@layout/setting_1_layout"/>
-    <include layout="@layout/setting_2_layout"/>
-    <include layout="@layout/setting_3_layout"/>
 
     <Button
         android:id="@+id/btn_exit"

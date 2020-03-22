@@ -14,23 +14,22 @@ import com.example.demo.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * 积分
  */
-public class IntegralFragment extends Fragment {
+public class UpdatePswFragment extends Fragment {
     private TextView tvTitle,btHeaderRight;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_integral, container, false);
+        View view = inflater.inflate(R.layout.fragment_update_psw, container, false);
         initView(view);
         initData();
         return view;
     }
 
     private void initData() {
-        tvTitle.setText("积分");
+        tvTitle.setText("修改密码");
         btHeaderRight.setVisibility(View.GONE);
+
     }
 
     private void initView(View view) {

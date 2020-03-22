@@ -7,9 +7,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.demo.Fragment.AboutFragment;
-import com.example.demo.Fragment.AddressFragment;
 import com.example.demo.Fragment.FavoriteFragment;
-import com.example.demo.Fragment.IntegralFragment;
+import com.example.demo.Fragment.WalletFragment;
 import com.example.demo.Fragment.MainSearchFragment;
 import com.example.demo.Fragment.MoreFragment;
 import com.example.demo.Fragment.MyOrderFragment;
@@ -26,7 +25,7 @@ public class ContentActivity extends AppCompatActivity {
     private PersonalInfoFragment personalInfoFragment;
     private TextView btBack;
     private FavoriteFragment favoriteFragment;
-    private IntegralFragment integralFragment;
+    private WalletFragment walletFragment;
     private NoticeFragment noticeFragment;
     private SettingFragment settingFragment;
     private AboutFragment aboutFragment;
@@ -76,10 +75,10 @@ public class ContentActivity extends AppCompatActivity {
                         .commitAllowingStateLoss();
                 break;
             case 4:
-                integralFragment = new IntegralFragment();
+                walletFragment = new WalletFragment();
                 getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.content_frameLayout,integralFragment)
+                        .replace(R.id.content_frameLayout, walletFragment)
                         .commitAllowingStateLoss();
                 break;
             case 5:

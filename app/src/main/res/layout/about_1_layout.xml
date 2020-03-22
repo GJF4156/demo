@@ -44,10 +44,10 @@
             android:layout_height="0dp"
             android:layout_weight="1">
             <TextView
-                android:id="@+id/setting_psw"
                 style="@style/Personal_setting_textRight"
                 />
             <TextView
+                android:id="@+id/version"
                 style="@style/Personal_setting_textLeft"
                 android:text="版本更新"
                 />

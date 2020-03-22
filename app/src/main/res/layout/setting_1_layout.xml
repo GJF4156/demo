@@ -48,10 +48,10 @@
             android:layout_height="0dp"
             android:layout_weight="1">
             <TextView
-                android:id="@+id/tv_set_psw"
                 style="@style/Personal_setting_textRight"
                 />
             <TextView
+                android:id="@+id/tv_set_psw"
                 style="@style/Personal_setting_textLeft"
                 android:text="修改密码"
                 />
