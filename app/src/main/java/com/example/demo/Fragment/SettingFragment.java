@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.demo.R;
 
@@ -16,8 +17,8 @@ import com.example.demo.R;
  * A simple {@link Fragment} subclass.
  * 设置
  */
-public class SettingFragment extends Fragment {
-    private TextView tvTitle,btHeaderRight;
+public class SettingFragment extends Fragment implements View.OnClickListener {
+    private TextView tvTitle,btHeaderRight,tv_set_name,tv_set_saft;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,6 +37,26 @@ public class SettingFragment extends Fragment {
     private void initView(View view) {
         tvTitle = getActivity().findViewById(R.id.tv_title);
         btHeaderRight = getActivity().findViewById(R.id.bt_header_right);
+        tv_set_name=view.findViewById(R.id.tv_set_name);
+        tv_set_saft=view.findViewById(R.id.tv_set_saft);
+
+        tv_set_name.setOnClickListener(this);
+        tv_set_saft.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_set_name:
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,new PersonalInfoFragment())
+                        .addToBackStack(null)
+                        .commitAllowingStateLoss();
+                break;
+            case R.id.tv_set_saft:
+                Toast.makeText(getActivity(),"安全",Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
 }

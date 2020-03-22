@@ -54,7 +54,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MeFragment extends Fragment implements View.OnClickListener {
     FontIconView msign;
     FontIconView minsetting;
-    CardView cv_collect;
+    CardView cv_collect,cv2_collect;
     RelativeLayout rlayout_follow;
     RelativeLayout rlayout_info;
     RelativeLayout rlayout_setting;
@@ -97,6 +97,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         msign = view.findViewById(R.id.mine_sign);
         minsetting = view.findViewById(R.id.mine_minsetting);
         cv_collect = view.findViewById(R.id.mine_cardview);
+        cv2_collect = view.findViewById(R.id.mine_card2view);
         rlayout_about = view.findViewById(R.id.relativelayout_jifen);
         rlayout_follow = view.findViewById(R.id.relativelayout_info);
         rlayout_info = view.findViewById(R.id.relativelayout_setting);
@@ -110,6 +111,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
         msign.setOnClickListener(this);
         minsetting.setOnClickListener(this);
         cv_collect.setOnClickListener(this);
+        cv2_collect.setOnClickListener(this);
         rlayout_about.setOnClickListener(this);
         rlayout_follow.setOnClickListener(this);
         rlayout_info.setOnClickListener(this);
@@ -167,6 +169,11 @@ public class MeFragment extends Fragment implements View.OnClickListener {
                 //跳转到关于我们页面
                 intent = new Intent(getActivity(), ContentActivity.class);
                 intent.putExtra("type", "7");
+                startActivity(intent);
+                break;
+            case R.id.mine_card2view:
+                intent = new Intent(getActivity(), ContentActivity.class);
+                intent.putExtra("type", "10");
                 startActivity(intent);
                 break;
             default:

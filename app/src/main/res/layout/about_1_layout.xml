@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="7dp"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:background="@color/text_color">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/setting_name"
+                style="@style/Personal_setting_textRight"
+                />
+            <TextView
+                style="@style/Personal_setting_textLeft"
+                android:text="关注微信"
+                />
+        </LinearLayout>
+        <View
+            style="@style/Personal_set_line"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/setting_saft"
+                style="@style/Personal_setting_textRight"
+                />
+            <TextView
+                style="@style/Personal_setting_textLeft"
+                android:text="意见反馈"
+                />
+        </LinearLayout>
+        <View
+            style="@style/Personal_set_line"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/setting_psw"
+                style="@style/Personal_setting_textRight"
+                />
+            <TextView
+                style="@style/Personal_setting_textLeft"
+                android:text="版本更新"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

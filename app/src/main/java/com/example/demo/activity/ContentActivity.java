@@ -12,6 +12,7 @@ import com.example.demo.Fragment.FavoriteFragment;
 import com.example.demo.Fragment.IntegralFragment;
 import com.example.demo.Fragment.MainSearchFragment;
 import com.example.demo.Fragment.MoreFragment;
+import com.example.demo.Fragment.MyOrderFragment;
 import com.example.demo.Fragment.NoticeFragment;
 import com.example.demo.Fragment.PersonalInfoFragment;
 import com.example.demo.Fragment.ProductInfoFragment;
@@ -117,6 +118,12 @@ public class ContentActivity extends AppCompatActivity {
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.content_frameLayout,new MainSearchFragment())
+                        .commitAllowingStateLoss();
+                break;
+            case 10:
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_frameLayout,new MyOrderFragment())
                         .commitAllowingStateLoss();
                 break;
             default:

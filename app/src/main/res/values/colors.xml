@@ -43,4 +43,5 @@
     <color name="colorLine">#D5D5D5</color>
     <color name="colorSign">#FFD700</color>
     <color name="colorBG">#ededed</color>
+    <color name="colorlightGray">#f1f4f2</color>
 </resources>

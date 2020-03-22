@@ -31,7 +31,7 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class RecoverInfoFragment extends Fragment {
-    private TextView tv_title;
+    private TextView tv_title,bt_header_right;
     private EditText time,person,phone,address,sort;
     private Button submit;
 
@@ -46,6 +46,7 @@ public class RecoverInfoFragment extends Fragment {
 
     private void initData() {
         tv_title.setText("信息填写");
+        bt_header_right.setText("");
         getViewData();
     }
 
@@ -66,13 +67,13 @@ public class RecoverInfoFragment extends Fragment {
 
     private void initView(View view) {
         tv_title=getActivity().findViewById(R.id.tv_title);
+        bt_header_right=getActivity().findViewById(R.id.bt_header_right);
         time=view.findViewById(R.id.time);
         person=view.findViewById(R.id.person);
         phone=view.findViewById(R.id.phone);
         address=view.findViewById(R.id.address);
         sort=view.findViewById(R.id.sort);
         submit=view.findViewById(R.id.submit);
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

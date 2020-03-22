@@ -62,6 +62,18 @@
     <string name="kefu">&#xe60f;</string>
     <!--  购物车  -->
     <string name="shop">&#xe602;</string>
+    <!--  地址  -->
+    <string name="address">&#xe610;</string>
+    <!--  类型  -->
+    <string name="sort">&#xe617;</string>
+    <!--  电话  -->
+    <string name="phone">&#xe64c;</string>
+    <!--  待处理  -->
+    <string name="pending">&#xe618;</string>
+    <!--  已处理  -->
+    <string name="processed">&#xe619;</string>
+    <!--  已完成  -->
+    <string name="completed">&#xe61a;</string>
     <string name="ddhk_header_back">返回</string>
     <string name="mine_username">Reflection</string>
     <string name="mine_phone">173****4565</string>
@@ -95,4 +107,8 @@
     <string name="personal_set_btn">保 存</string>
     <string name="login_img_phone">&#xe615;</string>
     <string name="login_img_psw">&#xe605;</string>
+    <string name="jifen_tv1">当前所有积分</string>
+    <string name="jifen_tv2">100</string>
+    <string name="jifen_tv3">积分兑换</string>
+    <string name="jifen_tv4">获取方法</string>
 </resources>

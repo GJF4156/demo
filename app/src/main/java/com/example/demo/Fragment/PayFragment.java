@@ -132,7 +132,6 @@ public class PayFragment extends BaseFragment {
                             .beginTransaction()
                             .replace(R.id.content_frameLayout,new MyOrderFragment())
                             .commitAllowingStateLoss();
-                    getActivity().onBackPressed();
                 } else {
                     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
                 }
@@ -150,6 +149,8 @@ public class PayFragment extends BaseFragment {
         });
 
     }
+
+
 
     //获取总价
     private void getAllPrice(List<ShoppingCartBean> list) {
