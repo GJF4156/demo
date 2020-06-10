@@ -109,11 +109,11 @@ public class SearchActivity extends BaseActivity implements com.example.demo.act
     public void toshowDialog(List<SortsBean.DatalistBean> mStrs, int position) {
         CustomDialog dialog = new CustomDialog(SearchActivity.this, R.style.custom_dialog);
         dialog.setName(mStrs.get(position).getGname())
-                .setDescription(mStrs.get(position).getExplain())
+                .setDescription(mStrs.get(position).getGexplain())
                 .setChangjian("常见包括")
-                .setChangjiancontent(mStrs.get(position).getContain())
+                .setChangjiancontent(mStrs.get(position).getGcontain())
                 .setDelivery("投放要求")
-                .setDeliverycontent(mStrs.get(position).getTip());
+                .setDeliverycontent(mStrs.get(position).getGtip());
         /**
          * 根据类型的不同显示不同的结果
          */
@@ -182,9 +182,9 @@ public class SearchActivity extends BaseActivity implements com.example.demo.act
             datalistBean.setGname(text);
             datalistBean.setGtype(4);
             datalistBean.setAipre(2);
-            datalistBean.setExplain("输入错误或暂未收录");
-            datalistBean.setContain("输入错误或暂未收录");
-            datalistBean.setTip("输入错误或暂未收录");
+            datalistBean.setGexplain("输入错误或暂未收录");
+            datalistBean.setGcontain("输入错误或暂未收录");
+            datalistBean.setGtip("输入错误或暂未收录");
             mStrs.add(datalistBean);
             recyclerView.setAdapter(new RvAdapter(SearchActivity.this, mStrs, new RvAdapter.OnItemClickListener() {
                 @SuppressLint("ResourceType")

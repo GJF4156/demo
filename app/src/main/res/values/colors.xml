@@ -28,7 +28,7 @@
     <!--  其他垃圾  -->
     <color name="otherFontColor">#2B2B29</color>
     <!--  未收录  -->
-    <color name="notincludedFontColor">#2CA874</color>
+    <color name="notincludedFontColor">#FFD700</color>
     <color name="purple_button">#2CA874</color>
     <color name="gray">#808080</color>
     <color name="qianhui">#E0E0E0</color>

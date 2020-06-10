@@ -13,8 +13,10 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,24 +39,35 @@ import com.example.demo.IconFont.FontIconView;
 import com.example.demo.R;
 import com.example.demo.Utils.SPUtil;
 import com.example.demo.Utils.ScreenUtils;
+import com.example.demo.Utils.XutilsHttp;
 import com.example.demo.activity.ContentActivity;
+import com.example.demo.base.BaseFragment;
+import com.example.demo.model.Model;
 
 import org.xutils.DbManager;
+import org.xutils.common.Callback;
+import org.xutils.common.util.KeyValue;
+import org.xutils.http.RequestParams;
+import org.xutils.http.body.MultipartBody;
 import org.xutils.x;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MeFragment extends Fragment implements View.OnClickListener {
+public class MeFragment extends BaseFragment implements View.OnClickListener {
     FontIconView msign;
     FontIconView minsetting;
-    CardView cv_collect,cv2_collect;
+    CardView cv_collect, cv2_collect;
     RelativeLayout rlayout_follow;
     RelativeLayout rlayout_info;
     RelativeLayout rlayout_setting;
@@ -68,7 +81,7 @@ public class MeFragment extends Fragment implements View.OnClickListener {
     public static final int TAKE_PHOTO = 1;
     public static final int PICK_PHOTO = 2;
     private Intent intent;
-
+    File outputImage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -253,7 +266,9 @@ public class MeFragment extends Fragment implements View.OnClickListener {
 
     //调用摄像头
     private void takephoto() {
-        File outputImage = new File(getActivity().getExternalCacheDir(), "outputImage.jpg");
+        outputImage = new File(getActivity().getExternalCacheDir(), "photo.jpg");
+        String path = outputImage.getPath();
+        System.out.println("=============\n"+path);
         try {
             if (outputImage.exists()) {
                 outputImage.delete();
@@ -278,8 +293,14 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             case TAKE_PHOTO:
                 if (resultCode == getActivity().RESULT_OK) {
                     try {
-                        Bitmap bitmap = BitmapFactory.decodeStream(getActivity().getContentResolver().openInputStream(imageUri));
+                        Bitmap bitmap = BitmapFactory.decodeStream(getActivity()
+                                .getContentResolver()
+                                .openInputStream(imageUri));
+
+
                         mineHead.setImageBitmap(bitmap);
+                        uploadImg();
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -297,6 +318,38 @@ public class MeFragment extends Fragment implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    private void uploadImg() {
+        String url="http://192.168.137.194:8080/file/upload";
+        Uri uri = Uri.fromFile(outputImage);
+        //构建RequestParams对象，传入请求的服务器地址URL
+        RequestParams requestParams = new RequestParams(url);
+        requestParams.setMultipart(true);
+        requestParams.addBodyParameter("files",new File(outputImage.getPath()),"image/jpg");
+        x.http().post(requestParams, new org.xutils.common.Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                System.out.println("请求结果：" + result);
+            }
+
+            @Override
+            public void onFinished() {
+                //上传完成
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                //取消上传
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                //上传失败
+                System.out.println("请求失败：" + ex.toString());
+
+            }
+        });
     }
 
     @TargetApi(19)

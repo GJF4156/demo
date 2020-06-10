@@ -77,11 +77,11 @@ public class SearchFragment extends BaseFragment {
     public void toshowDialog(List<SortsBean.DatalistBean> mStrs, int position) {
         CustomDialog dialog = new CustomDialog(getActivity(), R.style.custom_dialog);
         dialog.setName(mStrs.get(position).getGname())
-                .setDescription(mStrs.get(position).getExplain())
+                .setDescription(mStrs.get(position).getGexplain())
                 .setChangjian("常见包括")
-                .setChangjiancontent(mStrs.get(position).getContain())
+                .setChangjiancontent(mStrs.get(position).getGcontain())
                 .setDelivery("投放要求")
-                .setDeliverycontent(mStrs.get(position).getTip());
+                .setDeliverycontent(mStrs.get(position).getGtip());
         switch (mStrs.get(position).getGtype()) {
             case 0:
                 //可回收垃圾

@@ -37,7 +37,7 @@ public class SearchRvAdapter extends RecyclerView.Adapter<SearchRvAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull SearchRvAdapter.ViewHolder holder, final int position) {
             holder.name.setText(mDataBeanList.get(position).getGname());
-            holder.sortDescription.setText(mDataBeanList.get(position).getTip());
+            holder.sortDescription.setText(mDataBeanList.get(position).getGtip());
             switch (mDataBeanList.get(position).getGtype()) {
                 case 0:
                     //可回收垃圾
